@@ -14,5 +14,6 @@ if [ ! -d ./matlabout ]; then
 fi
 
 export LD_LIBRARY_PATH="/home/rcf-40/chen116/dynamo/lpsolve_matlab"
-
+rm *.e*
+rm *.o*
 matlab -nosplash -nodesktop -r "run example.m" >> ./out/out_sf.txt

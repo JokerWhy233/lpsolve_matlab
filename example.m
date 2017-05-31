@@ -12,13 +12,13 @@ x= 150; % Mcycles per task
 v=10;
 
 
-m=10;
+m=20;
 k=m;
 B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
 B = randi([8 64],m,m);
 B(eye(size(B))~=0)=10e5;
 f =  randi([20 35],1,m)*100;%(MHz)
-N=  randi([1 8],1,m); % number of tasks(cars)
+N=  randi([3 6],1,m); % number of tasks(cars)
 C =  randi([5 15],1,m); % server link capacity (# of tasks)
 
 
@@ -110,11 +110,29 @@ xint=1:m*m;
 lp = lp_maker(obj, a, b, e,vlb, vub, xint);
 tic
 solvestat = mxlpsolve('solve', lp)
+toc
 final_obj = mxlpsolve('get_objective', lp);
 res = mxlpsolve('get_variables', lp);
 cons = mxlpsolve('get_constraints', lp);
 cons(end-m:end)'
-final_dist=reshape(res,m,m+1)';
-final_dist(1:m,:)
-%mxlpsolve('delete_lp', lp);
-toc
+dist=reshape(res,m,m+1)';
+final_dist=dist(1:m,:)
+lateness =zeros(m,m);
+final_lateness = zeros(1,m);
+
+
+for i=1:m
+    for j=1:k
+       lateness(i,j) = final_dist(i,j)*(1/B(i,j)+x/f(j));
+    end 
+    final_lateness=sum(lateness,2)-D;
+end
+
+final_lateness
+mxlpsolve('delete_lp', lp);
+
+
+
+
+
+
