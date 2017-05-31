@@ -117,6 +117,7 @@ cons = mxlpsolve('get_constraints', lp);
 final_cons=cons(end-m:end)'
 dist=reshape(res,m,m+1)';
 final_dist=sparse(dist(1:m,:))
+final_dist2=sparse(dist(1:m,:)')
 lateness =zeros(m,m);
 final_lateness = zeros(1,m);
 
@@ -128,7 +129,24 @@ for i=1:m
     final_lateness=sum(lateness,2)-D;
 end
 
+
 final_lateness
+
+final_lateness2 = zeros(m,1);
+
+for i=1:m    
+    final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+end
+
+
+final_lateness2
+
+
+opti=datastats(final_lateness)
+orig=datastats(final_lateness2)
+
+
+
 mxlpsolve('delete_lp', lp);
 
 
