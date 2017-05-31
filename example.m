@@ -12,12 +12,14 @@ x= 150; % Mcycles per task
 v=10;
 
 
-m=3;
-k=3;
-B = [10e5 8 24;16 10e5 8;24 16 10e5]; % link rate (task per second)
-f = [2000 2400 2500];%(MHz)
-N= [5 3 4]; % number of tasks(cars)
-C = [4 4 4]; % server link capacity (# of tasks)
+m=10;
+k=m;
+B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
+B = randi([8 64],m,m);
+B(eye(size(B))~=0)=10e5;
+f =  randi([20 35],1,m)*100;%(MHz)
+N=  randi([1 8],1,m); % number of tasks(cars)
+C =  randi([5 15],1,m); % server link capacity (# of tasks)
 
 
 
@@ -108,9 +110,11 @@ xint=1:m*m;
 lp = lp_maker(obj, a, b, e,vlb, vub, xint);
 tic
 solvestat = mxlpsolve('solve', lp)
-final_obj = mxlpsolve('get_objective', lp)
-res = mxlpsolve('get_variables', lp)
-cons = mxlpsolve('get_constraints', lp)
-final_dist=reshape(res,m,m+1)'
+final_obj = mxlpsolve('get_objective', lp);
+res = mxlpsolve('get_variables', lp);
+cons = mxlpsolve('get_constraints', lp);
+cons(end-m:end)'
+final_dist=reshape(res,m,m+1)';
+final_dist(1:m,:)
 %mxlpsolve('delete_lp', lp);
 toc
