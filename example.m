@@ -114,9 +114,9 @@ toc
 final_obj = mxlpsolve('get_objective', lp);
 res = mxlpsolve('get_variables', lp);
 cons = mxlpsolve('get_constraints', lp);
-cons(end-m:end)'
+final_cons=cons(end-m:end)'
 dist=reshape(res,m,m+1)';
-final_dist=dist(1:m,:)
+final_dist=sparse(dist(1:m,:))
 lateness =zeros(m,m);
 final_lateness = zeros(1,m);
 

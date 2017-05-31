@@ -9,7 +9,7 @@ cd /home/rcf-40/chen116/dynamo/lpsolve_matlab
 if [ -e /usr/usc/matlab/default/setup.sh ]; then
 	source /usr/usc/matlab/default/setup.sh
 fi
-if [ ! -d ./matlabout ]; then
+if [ ! -d ./out ]; then
 	mkdir "out"
 fi
 
