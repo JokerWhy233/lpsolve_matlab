@@ -6,7 +6,7 @@ clc
 close all
 
 
-D = 0.5;% deadline (sec)
+D = 0.4;% deadline (sec)
 tau = .3; % allocated cpu time (sec)
 x= 150; % Mcycles per task
 v=10;
@@ -18,8 +18,8 @@ B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
 B = randi([8 64],m,m);
 B(eye(size(B))~=0)=10e5;
 f =  randi([20 35],1,m)*100;%(MHz)
-N=  randi([3 6],1,m); % number of tasks(cars)
-C =  randi([5 15],1,m); % server link capacity (# of tasks)
+N=  randi([3 8],1,m); % number of tasks(cars)
+C =  randi([4 10],1,m); % server link capacity (# of tasks)
 
 
 
