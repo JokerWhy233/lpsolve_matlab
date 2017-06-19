@@ -7,20 +7,34 @@ close all
 
 
 D = 0.4;% deadline (sec)
-tau = .3; % allocated cpu time (sec)
+tau = 0.3; % allocated cpu time (sec)
 x= 150; % Mcycles per task
 v=10;
 
 
 m=20;
 k=m;
-B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
-B = randi([8 64],m,m);
-B(eye(size(B))~=0)=10e5;
-f =  randi([20 35],1,m)*100;%(MHz)
-N=  randi([3 8],1,m); % number of tasks(cars)
-C =  randi([4 10],1,m); % server link capacity (# of tasks)
 
+
+not_fea = 1;
+while not_fea 
+  first = 0;
+  B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
+  B = randi([8 64],m,m);
+  B(eye(size(B))~=0)=10e5;
+  f =  randi([18 24],1,m)*150;%(MHz)
+  N=  randi([4 8],1,m); % number of tasks(cars)
+  C =  randi([4 10],1,m); % server link capacity (# of tasks)
+
+  num_tasks_allowed = sum(floor(tau*f/x));
+  num_tasks = sum(N);
+  if num_tasks < num_tasks_allowed & num_tasks < sum(C)
+    not_fea = 0;
+  else
+    not_fea = 1;
+  end
+
+end
 
 
 % m=2;
@@ -145,8 +159,9 @@ final_lateness2
 opti=datastats(final_lateness)
 orig=datastats(final_lateness2)
 
-
-
+num_tasks_allowed = sum(floor(tau*f/x))
+num_tasks = sum(N)
+num_tasks_c = sum(C)
 mxlpsolve('delete_lp', lp);
 
 
