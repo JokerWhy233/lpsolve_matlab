@@ -129,10 +129,10 @@ final_obj = mxlpsolve('get_objective', lp);
 res = mxlpsolve('get_variables', lp);
 cons = mxlpsolve('get_constraints', lp);
 %final_y1_cons=cons(end-2m+1:end-m)'
-final_y2_cons=cons(end-m+1:end)'
+final_y2_cons=cons(end-m+1:end)';
 dist=reshape(res,m,m+1)';
-final_dist=sparse(dist(1:m,:))
-final_dist2=sparse(dist(1:m,:)')
+final_dist=sparse(dist(1:m,:));
+final_dist2=sparse(dist(1:m,:)');
 lateness =zeros(m,m);
 opt_lateness = zeros(1,m);
 
@@ -160,11 +160,11 @@ for i=1:m
 end
 
 
-no_opt_lateness
+%no_opt_lateness
 
 
-opt_stat=datastats(opt_lateness)
-no_opt_stat=datastats(no_opt_lateness)
+%opt_stat=datastats(opt_lateness)
+%no_opt_stat=datastats(no_opt_lateness)
 
 
 no_opt_avail_cpu_minus_required_cpu=tau*f-N*x
