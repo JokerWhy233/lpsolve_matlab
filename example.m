@@ -128,7 +128,8 @@ toc
 final_obj = mxlpsolve('get_objective', lp);
 res = mxlpsolve('get_variables', lp);
 cons = mxlpsolve('get_constraints', lp);
-final_cons=cons(end-m+1:end)'
+final_y1_cons=cons(end-2m+1:end-m)'
+final_y2_cons=cons(end-m+1:end)'
 dist=reshape(res,m,m+1)';
 final_dist=sparse(dist(1:m,:))
 final_dist2=sparse(dist(1:m,:)')
