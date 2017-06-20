@@ -7,7 +7,7 @@ close all
 
 
 D = 0.4;% deadline (sec)
-tau = 0.3; % allocated cpu time (sec)
+tau = 0.4; % allocated cpu time (sec)
 x= 150; % Mcycles per task
 v=10;
 
