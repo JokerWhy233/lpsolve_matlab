@@ -146,18 +146,18 @@ end
 
 opt_lateness
 
-no_opt_lateness2 = zeros(m,1);
+no_opt_lateness = zeros(m,1);
 
 for i=1:m    
-    no_opt_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+    no_opt_lateness(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
 end
 
 
-no_opt_lateness2
+no_opt_lateness
 
 
-opt_stat=datastats(final_lateness)
-no_opt_stat=datastats(final_lateness2)
+opt_stat=datastats(opt_lateness)
+no_opt_stat=datastats(no_opt_lateness)
 
 
 no_opt_avail_cpu_minus_required_cpu=tau*f-N*x
