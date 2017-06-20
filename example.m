@@ -145,9 +145,9 @@ opt_lateness = zeros(1,m);
 %end
 for i=1:m
     for j=1:k
-       lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i))
+       lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
     end 
-    final_lateness=sum(lateness,2)-D;
+    opt_lateness=sum(lateness,2)-D;
 end
 
 
