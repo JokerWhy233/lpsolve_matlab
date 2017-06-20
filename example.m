@@ -133,31 +133,34 @@ dist=reshape(res,m,m+1)';
 final_dist=sparse(dist(1:m,:))
 final_dist2=sparse(dist(1:m,:)')
 lateness =zeros(m,m);
-final_lateness = zeros(1,m);
+opt_lateness = zeros(1,m);
 
 
 for i=1:m
     for j=1:k
        lateness(i,j) = final_dist(i,j)*(1/B(i,j)+x/f(j));
     end 
-    final_lateness=sum(lateness,2)-D;
+    opt_lateness=sum(lateness,2)-D;
 end
 
 
-final_lateness
+opt_lateness
 
-final_lateness2 = zeros(m,1);
+no_opt_lateness2 = zeros(m,1);
 
 for i=1:m    
-    final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+    no_opt_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
 end
 
 
-final_lateness2
+no_opt_lateness2
 
 
-opti=datastats(final_lateness)
-orig=datastats(final_lateness2)
+opt_stat=datastats(final_lateness)
+no_opt_stat=datastats(final_lateness2)
+
+
+no_opt_avail_cpu_minus_required_cpu=tau*f-N*x
 
 num_tasks_allowed = sum(floor(tau*f/x))
 num_tasks = sum(N)
