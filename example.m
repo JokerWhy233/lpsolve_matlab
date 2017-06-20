@@ -177,5 +177,60 @@ mxlpsolve('delete_lp', lp);
 
 
 
+%% check deadline misses
+
+opt_no_miss_cnt = 0;
+opt_miss_cnt = 0;
+for i=1:m
+    time_passed = 0;
+    
+    for j=1:k
+        if final_dist2(i,j)>0
+            for jj=1:final_dist2(i,j)
+                time_passed=time_passed+(1/B(j,i)+x/f(i));
+                if  time_passed <= D
+                    opt_no_miss_cnt = opt_no_miss_cnt + 1;
+                else
+                    opt_miss_cnt = opt_miss_cnt + 1;
+                end
+            end
+        end
+       lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
+    end 
+    opt_lateness=sum(lateness,2)-D;
+end
+
+
+
+opt_no_miss_cnt
+opt_miss_cnt
+
+
+no_miss_cnt = 0;
+miss_cnt = 0;
+
+for i=1:m    
+    time_passed = 0;
+    for kk= 1:N(i)
+        if C(i)>=kk
+            time_passed = time_passed +  1/B(i,i) + x/f(i);
+            if  time_passed <= D
+                no_miss_cnt = no_miss_cnt + 1;
+            else
+                miss_cnt = miss_cnt + 1;
+            end
+        else
+           miss_cnt=miss_cnt+1; 
+        end
+        
+    end
+    final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+end
+no_miss_cnt
+miss_cnt
+
+
+
+
 
 
