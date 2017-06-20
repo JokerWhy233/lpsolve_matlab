@@ -206,8 +206,10 @@ opt_no_miss_cnt
 opt_miss_cnt
 
 
+
 no_miss_cnt = 0;
-miss_cnt = 0;
+miss_cnt_t_limit = 0;
+miss_cnt_c_limit = 0;
 
 for i=1:m    
     time_passed = 0;
@@ -217,19 +219,18 @@ for i=1:m
             if  time_passed <= D
                 no_miss_cnt = no_miss_cnt + 1;
             else
-                miss_cnt = miss_cnt + 1;
+                miss_cnt_t_limit  = miss_cnt_t_limit  + 1;
             end
         else
-           miss_cnt=miss_cnt+1; 
+           miss_cnt_c_limit=miss_cnt_c_limit+1; 
         end
         
     end
     final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
 end
+miss_cnt_c_limit
+miss_cnt_t_limit
 no_miss_cnt
-miss_cnt
-
-
 
 
 
