@@ -44,7 +44,7 @@ no_miss_cnt = 0;
 miss_cnt_t_limit = 0;
 miss_cnt_c_limit = 0;
 
-for iter = 1:5
+for iter = 1:1
 
      not_fea = 1;
      while not_fea 
