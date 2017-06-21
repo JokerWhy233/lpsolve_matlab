@@ -46,18 +46,18 @@ miss_cnt_c_limit = 0;
 
 for iter = 1:1
 
-%     not_fea = 1;
-%     while not_fea 
-%       N=  randi([4 8],1,m)*2; % number of tasks(cars)
-%       num_tasks_allowed = sum(floor(tau*f/x));
-%       num_tasks = sum(N);
-%       if num_tasks < num_tasks_allowed & num_tasks < sum(C)
-%         not_fea = 0;
-%       else
-%         not_fea = 1;
-%       end
+     not_fea = 1;
+     while not_fea 
+       N=  randi([4 8],1,m); % number of tasks(cars)
+       num_tasks_allowed = sum(floor(tau*f/x));
+       num_tasks = sum(N);
+       if num_tasks < num_tasks_allowed & num_tasks < sum(C)
+         not_fea = 0;
+       else
+         not_fea = 1;
+       end
 
-%     end
+     end
 
 
     obj = [];
