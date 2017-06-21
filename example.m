@@ -37,9 +37,6 @@ while not_fea
 end
 
 
-B
-C
-f
 
 % m=2;
 % k=2;
