@@ -7,24 +7,25 @@ close all
 rng('shuffle');
 D = 0.4;% deadline (sec)
 tau = 0.4; % allocated cpu time (sec)
-x= 20; % Mcycles per task
+x= 150; % Mcycles per task
 v=10;
 
 
-m=5;
+m=25;
 k=m;
 
 
 not_fea = 1;
 while not_fea 
   first = 0;
+
   B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
   B = randi([8 64],m,m);
   B(eye(size(B))~=0)=10e5;
-  f =  randi([2000 3600],1,m);%(MHz)
+  f =  randi([18 24],1,m)*150;%(MHz)
   N=  randi([4 8],1,m); % number of tasks(cars)
   C =  randi([4 10],1,m); % server link capacity (# of tasks)
-
+  
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
