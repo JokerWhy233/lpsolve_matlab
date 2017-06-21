@@ -44,7 +44,7 @@ no_miss_cnt = 0;
 miss_cnt_t_limit = 0;
 miss_cnt_c_limit = 0;
 
-for iter = 1:1
+for iter = 1:5
 
      not_fea = 1;
      while not_fea 
@@ -140,6 +140,8 @@ for iter = 1:1
     tic
     solvestat = mxlpsolve('solve', lp)
     toc
+    
+    
     final_obj = mxlpsolve('get_objective', lp);
     res = mxlpsolve('get_variables', lp);
     cons = mxlpsolve('get_constraints', lp);
