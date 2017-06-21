@@ -27,7 +27,7 @@ while not_fea
 
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
-  if num_tasks < num_tasks_allowed & num_tasks < sum(C)
+  if num_tasks < sum(C)
     not_fea = 0;
   else
     not_fea = 1;
@@ -50,7 +50,7 @@ for iter = 1:1
       N=  randi([40 80],1,m); % number of tasks(cars)
       num_tasks_allowed = sum(floor(tau*f/x));
       num_tasks = sum(N);
-      if num_tasks < num_tasks_allowed & num_tasks < sum(C)
+      if num_tasks < sum(C)
         not_fea = 0;
       else
         not_fea = 1;
@@ -99,14 +99,14 @@ for iter = 1:1
     for j=1:m
        y2(j,m*k+j) = 1;
     end
-    a= [c1;c2;c3;y1;y2];
+    a= [c2;c3;y1;y2];
     b = zeros(size(a,1),1);
     cnt = 1;
 
-    for j=1:m
-       b(cnt) = f(j)*tau;
-       cnt = cnt +1;
-    end
+%     for j=1:m
+%        b(cnt) = f(j)*tau;
+%        cnt = cnt +1;
+%     end
 
     for j=1:m
        b(cnt) = C(j);
