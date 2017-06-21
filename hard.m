@@ -22,8 +22,8 @@ while not_fea
   B = randi([8 64],m,m);
   B(eye(size(B))~=0)=10e5;
   f =  randi([2000 3600],1,m);%(MHz)
-  N=  randi([40 80],1,m)/10; % number of tasks(cars)
-  C =  randi([40 100],1,m)/10; % server link capacity (# of tasks)
+  N=  randi([4 8],1,m); % number of tasks(cars)
+  C =  randi([4 10],1,m); % server link capacity (# of tasks)
 
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
@@ -47,7 +47,7 @@ for iter = 1:1
 
     not_fea = 1;
     while not_fea 
-      N=  randi([40 80],1,m)/10; % number of tasks(cars)
+      N=  randi([4 8],1,m); % number of tasks(cars)
       num_tasks_allowed = sum(floor(tau*f/x));
       num_tasks = sum(N);
       if num_tasks < num_tasks_allowed & num_tasks < sum(C)
