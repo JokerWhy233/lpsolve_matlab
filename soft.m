@@ -250,3 +250,4 @@ aaa
 miss_cnt_c_limit
 miss_cnt_t_limit
 no_miss_cnt
+sum(final_dist2)
