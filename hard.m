@@ -1,3 +1,22 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Marketplace
+Gist
+ @chen116
+ Sign out
+ Unwatch 1
+  Star 0
+ Fork 0 chen116/lpsolve_matlab
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Settings Insights 
+Branch: master Find file Copy pathlpsolve_matlab/hard.m
+ca010c5  5 minutes ago
+@chen116 chen116 Update hard.m
+1 contributor
+RawBlameHistory     
+255 lines (193 sloc)  4.88 KB
 %m by k
 
 clear
@@ -13,8 +32,8 @@ v=10;
 
 m=24;
 k=m;
-
-
+suc_solved = 0;
+total_iter = 1;
 not_fea = 1;
 while not_fea 
   first = 0;
@@ -44,7 +63,7 @@ no_miss_cnt = 0;
 miss_cnt_t_limit = 0;
 miss_cnt_c_limit = 0;
 
-for iter = 1:2
+for iter = 1:total_iter
 
      not_fea = 1;
      while not_fea 
@@ -141,103 +160,107 @@ for iter = 1:2
     solvestat = mxlpsolve('solve', lp)
     toc
     
-    
-    final_obj = mxlpsolve('get_objective', lp);
-    res = mxlpsolve('get_variables', lp);
-    cons = mxlpsolve('get_constraints', lp);
-    %final_y1_cons=cons(end-2m+1:end-m)'
-    final_y2_cons=cons(end-m+1:end)';
-    dist=reshape(res,m,m+1)';
-    final_dist=sparse(dist(1:m,:));
-    final_dist2=sparse(dist(1:m,:)');
-    lateness =zeros(m,m);
-    opt_lateness = zeros(1,m);
+    if(solvestat==0)
+        suc_solved = suc_solved +1;
+        final_obj = mxlpsolve('get_objective', lp);
+        res = mxlpsolve('get_variables', lp);
+        cons = mxlpsolve('get_constraints', lp);
+        %final_y1_cons=cons(end-2m+1:end-m)'
+        final_y2_cons=cons(end-m+1:end)';
+        dist=reshape(res,m,m+1)';
+        final_dist=sparse(dist(1:m,:));
+        final_dist2=sparse(dist(1:m,:)');
+        lateness =zeros(m,m);
+        opt_lateness = zeros(1,m);
 
 
-    %for i=1:m
-    %    for j=1:k
-    %       lateness(i,j) = final_dist(i,j)*(1/B(i,j)+x/f(j));
-    %    end 
-    %    opt_lateness=sum(lateness,2)-D;
-    %end
-    for i=1:m
-        for j=1:k
-           lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
-        end 
-        opt_lateness=sum(lateness,2)-D;
-    end
-
-
-    %opt_lateness
-
-    no_opt_lateness = zeros(m,1);
-
-    for i=1:m    
-        no_opt_lateness(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
-    end
-
-
-    %no_opt_lateness
-
-
-    %opt_stat=datastats(opt_lateness)
-    %no_opt_stat=datastats(no_opt_lateness)
-
-
-    no_opt_avail_cpu_minus_required_cpu=tau*f-N*x;
-
-    num_tasks_allowed = sum(floor(tau*f/x))
-    num_tasks = sum(N)
-    num_tasks_c = sum(C)
-    mxlpsolve('delete_lp', lp);
-
-
-
-
-    %check deadline misses
-
-
-    for i=1:m
-        time_passed = 0;
-
-        for j=1:k
-            if final_dist2(i,j)>0
-                for jj=1:final_dist2(i,j)
-                    time_passed=time_passed+(1/B(j,i)+x/f(i));
-                    if  time_passed <= D
-                        opt_no_miss_cnt = opt_no_miss_cnt + 1;
-                    else
-                        opt_miss_cnt = opt_miss_cnt + 1;
-                    end   
-                end
-            end
-           lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
-        end 
-        opt_lateness=sum(lateness,2)-D;
-    end
-
-
-
-
-
-
-  
-    for i=1:m    
-        time_passed = 0;
-        for kk= 1:N(i)
-            if C(i)>=kk
-                time_passed = time_passed +  1/B(i,i) + x/f(i);
-                if  time_passed <= D
-                    no_miss_cnt = no_miss_cnt + 1;
-                else
-                    miss_cnt_t_limit  = miss_cnt_t_limit  + 1;
-                end
-            else
-               miss_cnt_c_limit=miss_cnt_c_limit+1; 
-            end
-
+        %for i=1:m
+        %    for j=1:k
+        %       lateness(i,j) = final_dist(i,j)*(1/B(i,j)+x/f(j));
+        %    end 
+        %    opt_lateness=sum(lateness,2)-D;
+        %end
+        for i=1:m
+            for j=1:k
+               lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
+            end 
+            opt_lateness=sum(lateness,2)-D;
         end
-        final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+
+
+        %opt_lateness
+
+        no_opt_lateness = zeros(m,1);
+
+        for i=1:m    
+            no_opt_lateness(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+        end
+
+
+        %no_opt_lateness
+
+
+        %opt_stat=datastats(opt_lateness)
+        %no_opt_stat=datastats(no_opt_lateness)
+
+
+        no_opt_avail_cpu_minus_required_cpu=tau*f-N*x;
+
+        num_tasks_allowed = sum(floor(tau*f/x))
+        num_tasks = sum(N)
+        num_tasks_c = sum(C)
+        mxlpsolve('delete_lp', lp);
+
+
+
+
+        %check deadline misses
+
+
+        for i=1:m
+            time_passed = 0;
+
+            for j=1:k
+                if final_dist2(i,j)>0
+                    for jj=1:final_dist2(i,j)
+                        time_passed=time_passed+(1/B(j,i)+x/f(i));
+                        if  time_passed <= D
+                            opt_no_miss_cnt = opt_no_miss_cnt + 1;
+                        else
+                            opt_miss_cnt = opt_miss_cnt + 1;
+                        end   
+                    end
+                end
+               lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
+            end 
+            opt_lateness=sum(lateness,2)-D;
+        end
+
+
+
+
+
+
+
+        for i=1:m    
+            time_passed = 0;
+            for kk= 1:N(i)
+                if C(i)>=kk
+                    time_passed = time_passed +  1/B(i,i) + x/f(i);
+                    if  time_passed <= D
+                        no_miss_cnt = no_miss_cnt + 1;
+                    else
+                        miss_cnt_t_limit  = miss_cnt_t_limit  + 1;
+                    end
+                else
+                   miss_cnt_c_limit=miss_cnt_c_limit+1; 
+                end
+
+            end
+            final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+        end
+    else
+        mxlpsolve('delete_lp', lp);
     end
 
 
@@ -245,7 +268,7 @@ for iter = 1:2
 end
 
 
-
+solved_percen = suc_solved/total_iter 
 opt_no_miss_cnt
 opt_miss_cnt
 
