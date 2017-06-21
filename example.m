@@ -12,7 +12,7 @@ x= 150; % Mcycles per task
 v=10;
 
 
-m=5;
+m=25;
 k=m;
 
 
