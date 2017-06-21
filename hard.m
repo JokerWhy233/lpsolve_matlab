@@ -15,7 +15,7 @@ v=10;
 m=24;
 k=m;
 suc_solved = 0;
-total_iter = 2;
+total_iter = 1;
 not_fea = 1;
 while not_fea 
   first = 0;
