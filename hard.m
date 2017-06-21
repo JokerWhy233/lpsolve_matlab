@@ -8,14 +8,14 @@ close all
 rng('shuffle');
 D = 0.4;% deadline (sec)
 tau = 0.35; % allocated cpu time (sec)
-x= 75; % Mcycles per task
+x= 50; % Mcycles per task
 v=10;
 
 
 m=24;
 k=m;
 suc_solved = 0;
-total_iter = 1;
+total_iter = 10;
 not_fea = 1;
 while not_fea 
   first = 0;
@@ -251,6 +251,7 @@ end
 
 
 solved_percen = suc_solved/total_iter 
+total_iter 
 opt_no_miss_cnt
 opt_miss_cnt
 
