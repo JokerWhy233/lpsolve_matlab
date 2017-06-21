@@ -2,7 +2,7 @@
 #PBS -l nodes=1:ppn=2
 #PBS -l walltime=1:00:00
 #PBS -l mem=2000MB
-#PBS -N lpsolve_hard
+#PBS -N lpsolve_lesshard
 #PBS -e /home/rcf-40/chen116/dynamo/lpsolve_matlab
 #PBS -o /home/rcf-40/chen116/dynamo/lpsolve_matlab
 cd /home/rcf-40/chen116/dynamo/lpsolve_matlab
@@ -16,4 +16,4 @@ fi
 export LD_LIBRARY_PATH="/home/rcf-40/chen116/dynamo/lpsolve_matlab"
 rm *.e*
 rm *.o*
-matlab -nosplash -nodesktop -r "run hard.m" >> ./out/hard.txt
+matlab -nosplash -nodesktop -r "run hard.m" >> ./out/less_hard.txt
