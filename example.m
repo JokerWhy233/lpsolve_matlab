@@ -37,6 +37,10 @@ while not_fea
 end
 
 
+B
+C
+f
+
 % m=2;
 % k=2;
 % B=[10e5 8;16 10e5];
