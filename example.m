@@ -6,7 +6,7 @@ close all
 
 rng('shuffle');
 D = 0.4;% deadline (sec)
-tau = 0.4; % allocated cpu time (sec)
+tau = 0.35; % allocated cpu time (sec)
 x= 20; % Mcycles per task
 v=10;
 
