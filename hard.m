@@ -1,22 +1,4 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Gist
- @chen116
- Sign out
- Unwatch 1
-  Star 0
- Fork 0 chen116/lpsolve_matlab
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Settings Insights 
-Branch: master Find file Copy pathlpsolve_matlab/hard.m
-ca010c5  5 minutes ago
-@chen116 chen116 Update hard.m
-1 contributor
-RawBlameHistory     
-255 lines (193 sloc)  4.88 KB
+
 %m by k
 
 clear
