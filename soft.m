@@ -146,7 +146,7 @@ for iter = 1:1
     final_y2_cons=cons(end-m+1:end)';
     dist=reshape(res,m,m+1)';
     final_dist=sparse(dist(1:m,:));
-    final_dist2=sparse(dist(1:m,:)');
+    final_dist2=sparse(dist(1:m,:)')
     lateness =zeros(m,m);
     opt_lateness = zeros(1,m);
 
