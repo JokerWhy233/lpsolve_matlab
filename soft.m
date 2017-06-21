@@ -192,7 +192,7 @@ for iter = 1:1
 
 
     %check deadline misses
-
+    aaa=0;
 
     for i=1:m
         time_passed = 0;
@@ -204,6 +204,7 @@ for iter = 1:1
                     if  time_passed <= D
                         opt_no_miss_cnt = opt_no_miss_cnt + 1;
                     else
+                        aaa= 5;
                         opt_miss_cnt = opt_miss_cnt + 1;
                     end
                 end
@@ -245,7 +246,7 @@ end
 
 opt_no_miss_cnt
 opt_miss_cnt
-
+aaa
 miss_cnt_c_limit
 miss_cnt_t_limit
 no_miss_cnt
