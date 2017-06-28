@@ -12,7 +12,7 @@ x= 50; % Mcycles per task
 v=10;
 
 
-m=24;
+m=10;
 k=m;
 suc_solved = 0;
 total_iter = 10;
