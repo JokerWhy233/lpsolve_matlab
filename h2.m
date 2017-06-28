@@ -198,7 +198,7 @@ for iter = 1:total_iter
 
         %check deadline misses
 
-
+        % my opt
         for i=1:m
             time_passed = 0;
 
@@ -223,7 +223,7 @@ for iter = 1:total_iter
 
 
 
-
+        % static
         for i=1:m    
             time_passed = 0;
             for kk= 1:N(i)
@@ -241,6 +241,31 @@ for iter = 1:total_iter
             end
             final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
         end
+        
+        % random
+%         time_passed=zeros(1,m);
+%         for i=1:m    
+%             time_passed = 0;
+%             for kk= 1:N(i)
+%                 if C(i)>=kk
+%                     time_passed = time_passed +  1/B(i,i) + x/f(i);
+%                     if  time_passed <= D
+%                         no_miss_cnt = no_miss_cnt + 1;
+%                     else
+%                         miss_cnt_t_limit  = miss_cnt_t_limit  + 1;
+%                     end
+%                 else
+%                    miss_cnt_c_limit=miss_cnt_c_limit+1; 
+%                 end
+
+%             end
+%             final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+%         end        
+        
+        
+        
+        
+        
     else
         mxlpsolve('delete_lp', lp);
     end
