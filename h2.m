@@ -11,7 +11,7 @@ rng('shuffle');
 % v=10;
 
 D = 0.4;% deadline (sec)
-tau = 0.35; % allocated cpu time (sec)
+tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
 v=10;
 E=0;
