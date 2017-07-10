@@ -13,7 +13,7 @@ E=0;
 A=1;
 p=2.5;
 
-m=10;
+m=5;
 k=m;
 suc_solved = 0;
 total_iter = 1;
