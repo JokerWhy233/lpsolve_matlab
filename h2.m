@@ -5,15 +5,21 @@ clc
 close all
 
 rng('shuffle');
+% D = 0.4;% deadline (sec)
+% tau = 0.35; % allocated cpu time (sec)
+% x= 50; % Mcycles per task
+% v=10;
+
 D = 0.4;% deadline (sec)
-tau = 0.35; % allocated cpu time (sec)
+tau = 0.4; % allocated cpu time (sec)
 x= 50; % Mcycles per task
 v=10;
 E=0;
 A=1;
 p=2.5;
 
-m=5;
+
+m=3;
 k=m;
 suc_solved = 0;
 total_iter = 1;
