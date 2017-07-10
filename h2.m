@@ -48,9 +48,9 @@ end
 opt_no_miss_cnt = 0;
 opt_miss_cnt = 0;
 
-no_miss_cnt = 0;
-miss_cnt_t_limit = 0;
-miss_cnt_c_limit = 0;
+static_no_miss_cnt = 0;
+static_miss_cnt_t_limit = 0;
+static_miss_cnt_c_limit = 0;
 
 for iter = 1:total_iter
 
@@ -242,12 +242,12 @@ for iter = 1:total_iter
                 if C(i)>=kk
                     time_passed = time_passed +  1/B(i,i) + x/f(i);
                     if  time_passed <= D
-                        no_miss_cnt = no_miss_cnt + 1;
+                        static_no_miss_cnt = static_no_miss_cnt + 1;
                     else
-                        miss_cnt_t_limit  = miss_cnt_t_limit  + 1;
+                        static_miss_cnt_t_limit  = static_miss_cnt_t_limit  + 1;
                     end
                 else
-                   miss_cnt_c_limit=miss_cnt_c_limit+1; 
+                   static_miss_cnt_c_limit=static_miss_cnt_c_limit+1; 
                 end
 
             end
@@ -275,6 +275,20 @@ for iter = 1:total_iter
 %         end        
         
         
+       %check enegery usage
+ 
+        % my opt
+        opt_enegery_used = 0;
+        for i=1:m         
+            for j=1:k
+                opt_enegery_used=opt_enegery_used+  (A*f(i)^p+E)*final_dist2(i,j)*x/f(i);  
+            end 
+        end           
+        static_enegery_used = 0;  
+        % static
+        for i=1:m         
+                static_enegery_used=static_enegery_used+  (A*f(i)^p+E)*N(i)*x/f(i);  
+        end           
         
         
         
@@ -292,6 +306,9 @@ total_iter
 opt_no_miss_cnt
 opt_miss_cnt
 
-miss_cnt_c_limit
-miss_cnt_t_limit
-no_miss_cnt
+static_miss_cnt_c_limit
+static_miss_cnt_t_limit
+static_no_miss_cnt
+
+opt_enegery_used
+static_enegery_used 
