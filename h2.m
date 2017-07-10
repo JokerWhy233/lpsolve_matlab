@@ -11,7 +11,7 @@ rng('shuffle');
 % v=10;
 
 D = 0.4;% deadline (sec)
-tau = 0.38; % allocated cpu time (sec)
+tau = 0.35; % allocated cpu time (sec)
 x= 50; % Mcycles per task
 v=10;
 E=0;
@@ -22,7 +22,7 @@ p=2.5;
 m=10;
 k=m;
 suc_solved = 0;
-total_iter = 1;
+total_iter = 10;
 not_fea = 1;
 while not_fea 
   first = 0;
@@ -52,6 +52,8 @@ static_no_miss_cnt = 0;
 static_miss_cnt_t_limit = 0;
 static_miss_cnt_c_limit = 0;
 
+opt_enegery_used = 0;
+static_enegery_used = 0; 
 for iter = 1:total_iter
 
      not_fea = 1;
@@ -278,13 +280,13 @@ for iter = 1:total_iter
        %check enegery usage
  
         % my opt
-        opt_enegery_used = 0;
+
         for i=1:m         
             for j=1:k
                 opt_enegery_used=opt_enegery_used+  (A*f(i)^p+E)*final_dist2(i,j)*x/f(i);  
             end 
         end           
-        static_enegery_used = 0;  
+         
         % static
         for i=1:m         
                 static_enegery_used=static_enegery_used+  (A*f(i)^p+E)*N(i)*x/f(i);  
