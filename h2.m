@@ -1,4 +1,3 @@
-
 %m by k
 
 clear
@@ -10,7 +9,9 @@ D = 0.4;% deadline (sec)
 tau = 0.35; % allocated cpu time (sec)
 x= 50; % Mcycles per task
 v=10;
-
+E=0;
+A=1;
+p=2.5;
 
 m=10;
 k=m;
@@ -62,9 +63,14 @@ for iter = 1:total_iter
 
 
     obj = [];
+%     for i=1:m
+%         for j=1:m
+%             obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
+%         end
+%     end
     for i=1:m
         for j=1:m
-            obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
+            obj=[obj x/f(j)*(A*f(j)^p+E)]; 
         end
     end
     for i=1:m
