@@ -19,7 +19,7 @@ A=1;
 p=2.5;
 
 
-m=3;
+m=10;
 k=m;
 suc_solved = 0;
 total_iter = 1;
