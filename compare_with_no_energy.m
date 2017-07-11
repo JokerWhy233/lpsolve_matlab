@@ -327,6 +327,11 @@ display('now with only deadline')
             obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
         end
     end
+    
+        lp = lp_maker(obj, a, b, e,vlb, vub, xint);
+    tic
+    solvestat = mxlpsolve('solve', lp)
+    toc
 if(solvestat==0)
         suc_solved = suc_solved +1;
         final_obj = mxlpsolve('get_objective', lp);
