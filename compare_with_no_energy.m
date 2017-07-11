@@ -205,7 +205,7 @@ for iter = 1:total_iter
         num_tasks_allowed = sum(floor(tau*f/x))
         num_tasks = sum(N)
         num_tasks_c = sum(C)
-        mxlpsolve('delete_lp', lp);
+       % mxlpsolve('delete_lp', lp);
 
 
 
