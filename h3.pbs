@@ -18,4 +18,4 @@ rm *.e*
 rm *.o*
 rm out/$outtxt
 echo $outtxt
-matlab -nosplash -nodesktop -r "run h2.m" >> ./out/$outtxt
+matlab -nosplash -nodesktop -r "run compare_with_no_energy.m" >> ./out/$outtxt
