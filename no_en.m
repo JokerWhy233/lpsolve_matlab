@@ -14,10 +14,9 @@ D = 0.4;% deadline (sec)
 tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
 v=10;
-E=0;
-A=0.0001;
-p=2.5;
-
+E=50;
+A=3.5;
+p=3;
 
 m=10;
 k=m;
