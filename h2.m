@@ -13,7 +13,7 @@ close all
 D = 0.4;% deadline (sec)
 tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
-v=10;
+v=10; 
 E=0;
 A=0.0001;
 p=2.5;
@@ -22,7 +22,7 @@ p=2.5;
 m=10;
 k=m;
 suc_solved = 0;
-total_iter = 500;
+total_iter = 250;
 not_fea = 1;
 while not_fea 
   first = 0;
