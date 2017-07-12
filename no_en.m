@@ -16,12 +16,12 @@ x= 50; % Mcycles per task
 v=10e1;
 E=50;
 A=3.5;
-p=3;
+p=2.5;
 
 m=10;
 k=m;
 suc_solved = 0;
-total_iter = 100;
+total_iter = 1;
 not_fea = 1;
 while not_fea 
   first = 0;
