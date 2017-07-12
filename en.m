@@ -13,7 +13,7 @@ close all
 D = 0.4;% deadline (sec)
 tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
-v=10;
+v=10; 
 E=0;
 A=0.0001;
 p=2.5;
@@ -22,7 +22,7 @@ p=2.5;
 m=10;
 k=m;
 suc_solved = 0;
-total_iter = 250;
+total_iter = 10;
 not_fea = 1;
 while not_fea 
   first = 0;
@@ -71,16 +71,16 @@ for iter = 1:total_iter
 
 
     obj = [];
-    for i=1:m
-        for j=1:m
-            obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
-        end
-     end
 %     for i=1:m
 %         for j=1:m
-%             obj=[obj x/f(j)*(A*f(j)^p+E)]; 
+%             obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
 %         end
 %     end
+    for i=1:m
+        for j=1:m
+            obj=[obj x/f(j)*(A*f(j)^p+E)]; 
+        end
+    end
     for i=1:m
        obj=[obj v]; 
     end
@@ -305,8 +305,9 @@ end
 
 solved_percen = suc_solved/total_iter 
 total_iter 
-opt_no_miss_cnt
+
 opt_miss_cnt
+opt_no_miss_cnt
 
 static_miss_cnt_c_limit
 static_miss_cnt_t_limit
