@@ -3,7 +3,7 @@
 clear
 clc
 close all
-format long
+%format long
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
 % tau = 0.35; % allocated cpu time (sec)
@@ -13,7 +13,7 @@ format long
 D = 0.4;% deadline (sec)
 tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
-v=10e4;
+v=10;
 E=50;
 A=3.5;
 p=2.5;
