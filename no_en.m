@@ -55,7 +55,7 @@ static_miss_cnt_c_limit = 0;
 opt_enegery_used = 0;
 static_enegery_used = 0; 
 for iter = 1:total_iter
-
+     iter
      not_fea = 1;
      while not_fea 
        N=  randi([10 20],1,m); % number of tasks(cars)
