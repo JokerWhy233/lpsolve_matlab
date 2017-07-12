@@ -22,7 +22,7 @@ p=3;
 m=10;
 k=m;
 suc_solved = 0;
-total_iter = 200;
+total_iter = 1;
 not_fea = 1;
 while not_fea 
   first = 0;
