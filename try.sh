@@ -7,5 +7,5 @@ noname=no$name
 nomatfile=no$matfile
 noout=no$out
 
-#qsub h3.pbs -N $noname -v matname="$nomatfile",outtxt="$noout",m="$para"
+qsub h3.pbs -N $noname -v matname="$nomatfile",outtxt="$noout",m="$para"
 qsub h3.pbs -N $name -v matname="$matfile",outtxt="$out",m="$para"

@@ -1,8 +1,6 @@
 %m by k
 
-clear
-clc
-close all
+
 format long
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
