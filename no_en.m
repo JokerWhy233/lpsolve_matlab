@@ -153,7 +153,7 @@ for iter = 1:total_iter
 
     lp = lp_maker(obj, a, b, e,vlb, vub, xint);
     %tic
-    solvestat = mxlpsolve('solve', lp)
+    solvestat = mxlpsolve('solve', lp);
     %toc
     
     if(solvestat==0)
