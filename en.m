@@ -1,9 +1,9 @@
 %m by k
 
-clear
-clc
-close all
-format long
+% clear
+% clc
+% close all
+% format long
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
 % tau = 0.35; % allocated cpu time (sec)
@@ -17,10 +17,10 @@ v=10;
 E=50;
 A=10e-6;
 p=3;
-
+m
 %m=3;
 k=m;
-m
+
 suc_solved = 0;
 total_iter = 100;
 not_fea = 1;
