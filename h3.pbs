@@ -18,4 +18,4 @@ rm *.e*
 rm *.o*
 rm out/$outtxt
 echo $outtxt
-matlab -nosplash -nodesktop -r "m=$m;run $matname" >> ./out/$outtxt
+matlab -nosplash -nodesktop -r "m=$m;A=$A;run $matname" >> ./out/$outtxt
