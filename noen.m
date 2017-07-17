@@ -20,6 +20,7 @@ p=3;
 
 %m=3;
 k=m;
+m
 suc_solved = 0;
 total_iter = 100;
 not_fea = 1;
