@@ -8,5 +8,5 @@ nomatfile=no$matfile
 noout=no$out
 
 
-git pull && qsub h3.pbs -N $NAME -v matname="$MATFILE",outtxt="$OUT",x="$PARA"
+git pull && qsub h3.pbs -N $NAME -v matname="$MATFILE",outtxt="$OUT",m="$PARA"
 #git pull && qsub h3.pbs -N $noname -v matname="$nomatfile",outtxt="$noout",m="$para" && qsub h3.pbs -N $name -v matname="$matfile",outtxt="$out",m="$para"
