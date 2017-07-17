@@ -3,5 +3,12 @@ matfile=$2
 out=$3
 para=$4
 
+noname=no$name
+nomatfile=no$matfile
+noout=no$out
+
+
+
+
 #git pull && qsub h3.pbs -N $NAME -v matname="$MATFILE",outtxt="$OUT",x="$PARA"
-git pull && qsub h3.pbs -N no$name -v matname="no$matfile",outtxt="no$out",m="$para" && qsub h3.pbs -N $name -v matname="$matfile",outtxt="$out",m="$para"
+git pull && qsub h3.pbs -N $noname -v matname="$nomatfile",outtxt="$noout",m="$para" && qsub h3.pbs -N $name -v matname="$matfile",outtxt="$out",m="$para"
