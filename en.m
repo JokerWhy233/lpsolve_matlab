@@ -317,3 +317,5 @@ static_no_miss_cnt
 
 opt_enegery_used
 static_enegery_used 
+display('en')
+[m A]
