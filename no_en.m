@@ -53,6 +53,7 @@ static_miss_cnt_c_limit = 0;
 
 opt_enegery_used = 0;
 static_enegery_used = 0; 
+tic
 for iter = 1:total_iter
      iter;
      not_fea = 1;
@@ -151,9 +152,9 @@ for iter = 1:total_iter
     xint=1:m*m;
 
     lp = lp_maker(obj, a, b, e,vlb, vub, xint);
-    tic
+    %tic
     solvestat = mxlpsolve('solve', lp)
-    toc
+    %toc
     
     if(solvestat==0)
         suc_solved = suc_solved +1;
@@ -301,7 +302,7 @@ for iter = 1:total_iter
 
 
 end
-
+toc
 
 solved_percen = suc_solved/total_iter 
 total_iter 

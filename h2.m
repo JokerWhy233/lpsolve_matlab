@@ -202,9 +202,9 @@ for iter = 1:total_iter
 
         no_opt_avail_cpu_minus_required_cpu=tau*f-N*x;
 
-        num_tasks_allowed = sum(floor(tau*f/x))
-        num_tasks = sum(N)
-        num_tasks_c = sum(C)
+        num_tasks_allowed = sum(floor(tau*f/x));
+        num_tasks = sum(N);
+        num_tasks_c = sum(C);
         mxlpsolve('delete_lp', lp);
 
 
