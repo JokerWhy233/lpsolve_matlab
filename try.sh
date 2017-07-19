@@ -2,9 +2,11 @@ name=en
 matfile=en.m
 out=en.txt
 m=$1
-A=1e-$2
+a=$2
+A=1e-$a
 
-fullname=$name$m$A
+
+fullname=$name$m$a
 outfile=$fullname$out
 
 
