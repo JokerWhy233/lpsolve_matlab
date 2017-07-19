@@ -2,7 +2,7 @@ name=en
 matfile=en.m
 out=en.txt
 m=$1
-A=$2
+A=10e-$2
 
 fullname=$name$m$A
 outfile=$fullname$out
