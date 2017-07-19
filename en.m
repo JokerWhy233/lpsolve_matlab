@@ -13,11 +13,11 @@ format long
 D = 0.4;% deadline (sec)
 tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
-v=10; 
+%v=10; 
 E=50;
-%A=10e-12;
+A=1e-5;
 p=3;
-
+v
 %m=3;
 k=m;
 m
