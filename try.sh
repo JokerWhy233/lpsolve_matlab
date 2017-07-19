@@ -1,8 +1,8 @@
-name=$1
-matfile=$2
-out=$3
-m=$4
-A=$5
+name=en
+matfile=en.m
+out=en.txt
+m=$1
+A=$2
 
 fullname=$name$m$A
 outfile=$fullname$out
