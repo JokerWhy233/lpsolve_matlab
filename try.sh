@@ -4,7 +4,7 @@ out=$3
 m=$4
 A=$5
 
-$fullname=$name$m$A
+fullname=$name$m$A
 outfile=$fullname$out
 
 
