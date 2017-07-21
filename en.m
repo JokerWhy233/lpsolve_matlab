@@ -10,7 +10,7 @@ format long
 % x= 50; % Mcycles per task
 % v=10;
 
-D = 0.4;% deadline (sec)
+Deadline = 0.4;% deadline (sec)
 tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
 %v=10; 
@@ -24,6 +24,13 @@ m
 suc_solved = 0;
 total_iter = 100;
 not_fea = 1;
+
+
+task_iter = 10:10:50;
+
+for new_t = task_iter 
+
+
 while not_fea 
   first = 0;
 
@@ -31,8 +38,8 @@ while not_fea
   B = randi([8 64],m,m);
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
-  N=  randi([10 20],1,m); % number of tasks(cars)
-  C =  randi([10 20],1,m); % server link capacity (# of tasks)
+  N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
+  C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
@@ -141,7 +148,7 @@ for iter = 1:total_iter
     end
 
     for i=1:k
-       b(cnt) = -D;
+       b(cnt) = -Deadline;
        cnt = cnt +1;
     end
 
@@ -181,7 +188,7 @@ for iter = 1:total_iter
             for j=1:k
                lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
             end 
-            opt_lateness=sum(lateness,2)-D;
+            opt_lateness=sum(lateness,2)-Deadline;
         end
 
 
@@ -190,7 +197,7 @@ for iter = 1:total_iter
         no_opt_lateness = zeros(m,1);
 
         for i=1:m    
-            no_opt_lateness(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+            no_opt_lateness(i)=N(i)* ( 1/B(i,i) + x/f(i) )-Deadline;
         end
 
 
@@ -221,7 +228,7 @@ for iter = 1:total_iter
                 if final_dist2(i,j)>0
                     for jj=1:final_dist2(i,j)
                         time_passed=time_passed+(1/B(j,i)+x/f(i));
-                        if  time_passed <= D
+                        if  time_passed <= Deadline
                             opt_no_miss_cnt = opt_no_miss_cnt + 1;
                         else
                             opt_miss_cnt = opt_miss_cnt + 1;
@@ -230,7 +237,7 @@ for iter = 1:total_iter
                 end
                lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
             end 
-            opt_lateness=sum(lateness,2)-D;
+            opt_lateness=sum(lateness,2)-Deadline;
         end
 
 
@@ -244,7 +251,7 @@ for iter = 1:total_iter
             for kk= 1:N(i)
                 if C(i)>=kk
                     time_passed = time_passed +  1/B(i,i) + x/f(i);
-                    if  time_passed <= D
+                    if  time_passed <= Deadline
                         static_no_miss_cnt = static_no_miss_cnt + 1;
                     else
                         static_miss_cnt_t_limit  = static_miss_cnt_t_limit  + 1;
@@ -254,7 +261,7 @@ for iter = 1:total_iter
                 end
 
             end
-            final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+            final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-Deadline;
         end
         
         % random
@@ -303,6 +310,8 @@ for iter = 1:total_iter
 
 
 end
+
+
 toc
 
 solved_percen = suc_solved/total_iter 
@@ -317,5 +326,8 @@ static_no_miss_cnt
 
 opt_enegery_used
 static_enegery_used 
+
+end
+
 display('en')
 [m A]
