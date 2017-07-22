@@ -3,6 +3,9 @@
 % clear
 % clc
 % close all
+
+diary('test.txt')
+diary on
 format long
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
@@ -328,6 +331,8 @@ opt_enegery_used
 static_enegery_used 
 
 end
-
+diary off
 display('en')
 [m A]
+
+
