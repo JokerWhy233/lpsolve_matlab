@@ -24,15 +24,17 @@ v
 %m=3;
 k=m;
 m
-suc_solved = 0;
-total_iter = 100;
-not_fea = 1;
+
 
 
 task_iter = 10:10:50;
 
 for new_t = task_iter 
-
+    
+new_t    
+suc_solved = 0;
+total_iter = 100;
+not_fea = 1;
 
 while not_fea 
   first = 0;
