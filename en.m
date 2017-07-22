@@ -314,7 +314,7 @@ for iter = 1:total_iter
 % 
 % 
 % 
-% end
+end
 % 
 % 
 % toc
