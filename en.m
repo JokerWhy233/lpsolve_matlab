@@ -27,7 +27,7 @@ m
 
 
 
-task_iter = [15];
+task_iter = 10:10:50;
 
 for new_t = task_iter 
     
@@ -316,6 +316,7 @@ for iter = 1:total_iter
 % 
 % 
 end
+
 % 
 % 
 % toc
