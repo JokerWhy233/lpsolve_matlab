@@ -1,6 +1,6 @@
 %m by k
 
-% clear
+clear
 % clc
 % close all
 delete('test.txt')
