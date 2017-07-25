@@ -15,7 +15,7 @@ format long
 
 Deadline = 0.4;% deadline (sec)
 tau = 0.38; % allocated cpu time (sec)
-x= 25; % Mcycles per task
+x= 10; % Mcycles per task
 %v=10; 
 E=50;
 A=1e-4;
