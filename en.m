@@ -29,6 +29,16 @@ m
 
 task_iter = 10:10:50;
 
+arr_opt_no_miss_cnt = zeros(1, length(task_iter));
+arr_opt_miss_cnt =  zeros(1, length(task_iter));
+arr_static_no_miss_cnt =  zeros(1, length(task_iter));
+arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
+arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
+arr_opt_enegery_used = zeros(1, length(task_iter));
+arr_static_enegery_used = zeros(1, length(task_iter));
+arr_task_iter_cnt = 1;
+
+
 for new_t = task_iter 
     
    
@@ -324,19 +334,34 @@ toc
 solved_percen = suc_solved/total_iter 
 total_iter 
 
-opt_miss_cnt
-opt_no_miss_cnt
+arr_opt_miss_cnt(arr_task_iter_cnt)=opt_miss_cnt;
+arr_opt_no_miss_cnt(arr_task_iter_cnt)=opt_no_miss_cnt;
 
-static_miss_cnt_c_limit
-static_miss_cnt_t_limit
-static_no_miss_cnt
+arr_static_miss_cnt_c_limit(arr_task_iter_cnt)=static_miss_cnt_c_limit;
+arr_static_miss_cnt_t_limit(arr_task_iter_cnt)=static_miss_cnt_t_limit;
+arr_static_no_miss_cnt(arr_task_iter_cnt)=static_no_miss_cnt;
 
-opt_enegery_used
-static_enegery_used 
-
+arr_opt_enegery_used(arr_task_iter_cnt)=opt_enegery_used;
+arr_static_enegery_used(arr_task_iter_cnt)=static_enegery_used; 
+arr_task_iter_cnt=arr_task_iter_cnt+1;
 end
-diary off
+
+
+arr_opt_miss_cnt(arr_task_iter_cnt)=opt_miss_cnt
+arr_opt_no_miss_cnt(arr_task_iter_cnt)=opt_no_miss_cnt
+
+arr_static_miss_cnt_c_limit(arr_task_iter_cnt)=static_miss_cnt_c_limit
+arr_static_miss_cnt_t_limit(arr_task_iter_cnt)=static_miss_cnt_t_limit
+arr_static_no_miss_cnt(arr_task_iter_cnt)=static_no_miss_cnt
+
+arr_opt_enegery_used(arr_task_iter_cnt)=opt_enegery_used
+arr_static_enegery_used(arr_task_iter_cnt)=static_enegery_used
+
+
+
+
 display('en')
 [m A]
 
+diary off
 

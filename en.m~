@@ -1,8 +1,11 @@
 %m by k
 
-% clear
+clear
 % clc
 % close all
+delete('test.txt')
+diary('test.txt')
+diary on
 format long
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
@@ -10,26 +13,38 @@ format long
 % x= 50; % Mcycles per task
 % v=10;
 
-Deadline = 0.4;% deadline (sec)
-tau = 0.38; % allocated cpu time (sec)
-x= 50; % Mcycles per task
+Deadline = 0.5;% deadline (sec)
+tau = 0.48; % allocated cpu time (sec)
+x= 10; % Mcycles per task
 %v=10; 
 E=50;
-A=1e-5;
+A=1e-4;
 p=3;
-v
-%m=3;
+v=10;
+m=3;
 k=m;
 m
-suc_solved = 0;
-total_iter = 100;
-not_fea = 1;
+
 
 
 task_iter = 10:10:50;
 
-for new_t = task_iter 
+arr_opt_no_miss_cnt = zeros(1, length(task_iter));
+arr_opt_miss_cnt =  zeros(1, length(task_iter));
+arr_static_no_miss_cnt =  zeros(1, length(task_iter));
+arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
+arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
+arr_opt_enegery_used = zeros(1, length(task_iter));
+arr_static_enegery_used = zeros(1, length(task_iter));
+arr_task_iter_cnt = 1;
 
+
+for new_t = task_iter 
+    
+   
+suc_solved = 0;
+total_iter = 100;
+not_fea = 1;
 
 while not_fea 
   first = 0;
@@ -50,7 +65,7 @@ while not_fea
   end
 
 end
-
+new_t 
 
 opt_no_miss_cnt = 0;
 opt_miss_cnt = 0;
@@ -66,7 +81,7 @@ for iter = 1:total_iter
      iter;
      not_fea = 1;
      while not_fea 
-       N=  randi([10 20],1,m); % number of tasks(cars)
+       N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
        num_tasks_allowed = sum(floor(tau*f/x));
        num_tasks = sum(N);
        if num_tasks < num_tasks_allowed & num_tasks < sum(C)
@@ -76,6 +91,7 @@ for iter = 1:total_iter
        end
 
      end
+     
 
 
     obj = [];
@@ -312,22 +328,26 @@ for iter = 1:total_iter
 end
 
 
+
 toc
 
 solved_percen = suc_solved/total_iter 
 total_iter 
 
-opt_miss_cnt
-opt_no_miss_cnt
+arr_opt_miss_cnt(arr_task_iter_cnt)=opt_miss_cnt;
+arr_opt_no_miss_cnt(arr_task_iter_cnt)=opt_no_miss_cnt;
 
-static_miss_cnt_c_limit
-static_miss_cnt_t_limit
-static_no_miss_cnt
+arr_static_miss_cnt_c_limit(arr_task_iter_cnt)=static_miss_cnt_c_limit;
+static_miss_cnt_t_limit(arr_task_iter_cnt)=static_miss_cnt_t_limit;
+static_no_miss_cnt(arr_task_iter_cnt)=static_no_miss_cnt;
 
-opt_enegery_used
-static_enegery_used 
-
-
-
+opt_enegery_used(arr_task_iter_cnt)=opt_enegery_used;
+static_enegery_used(arr_task_iter_cnt)=static_enegery_used; 
+arr_task_iter_cnt=arr_task_iter_cnt+1;
+end
+diary off
 display('en')
 [m A]
+
+opt_enegery_used
+
