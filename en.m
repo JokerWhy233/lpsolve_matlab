@@ -27,13 +27,13 @@ m
 
 
 
-task_iter = 10:10:50;
+task_iter = [15];
 
 for new_t = task_iter 
     
    
 suc_solved = 0;
-total_iter = 100;
+total_iter = 1;
 not_fea = 1;
 
 while not_fea 
