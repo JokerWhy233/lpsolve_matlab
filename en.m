@@ -44,7 +44,7 @@ while not_fea
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
-  C =  randi([new_t+5 new_t+15],1,m); % server link capacity (# of tasks)
+  C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
