@@ -27,7 +27,7 @@ m
 
 
 
-task_iter = 10:20:100;
+task_iter = 10:30:130;
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
@@ -48,9 +48,7 @@ not_fea = 1;
 
 while not_fea 
   first = 0;
-
-  B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
-  B = randi([8 64],m,m);
+  B = randi([8 64],m,m);%link rate (task per second)
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
