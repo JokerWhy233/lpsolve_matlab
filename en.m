@@ -7,6 +7,9 @@ delete('test.txt')
 diary('test.txt')
 diary on
 format long
+
+rng('default');
+rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
 % tau = 0.35; % allocated cpu time (sec)
