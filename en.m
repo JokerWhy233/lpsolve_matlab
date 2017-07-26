@@ -50,7 +50,7 @@ while not_fea
   first = 0;
   B = randi([8 64],m,m);%link rate (task per second)
   B(eye(size(B))~=0)=10e5;
-  f =  randi([18 24],1,m)*150;%(MHz)
+  f =  randi([20 25],1,m)*150;%(MHz)
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   
