@@ -27,7 +27,7 @@ m
 
 
 
-task_iter = 10:20:110;
+task_iter = 10:20:90;%110;
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
