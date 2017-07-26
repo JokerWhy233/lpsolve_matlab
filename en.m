@@ -1,7 +1,7 @@
 %m by k
 
 clear
-% clc
+clc
 % close all
 delete('test.txt')
 diary('test.txt')
