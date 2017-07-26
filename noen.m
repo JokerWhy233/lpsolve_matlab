@@ -1,36 +1,61 @@
 %m by k
 
-
+clear
+clc
+% close all
+delete('test.txt')
+diary('test.txt')
+diary on
 format long
+
+rng('default');
+rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
 % tau = 0.35; % allocated cpu time (sec)
 % x= 50; % Mcycles per task
 % v=10;
 
-D = 0.4;% deadline (sec)
-tau = 0.38; % allocated cpu time (sec)
-x= 50; % Mcycles per task
+Deadline = 0.5;% deadline (sec)
+tau = 0.48; % allocated cpu time (sec)
+x= 10; % Mcycles per task
 %v=10; 
 E=50;
-A=1e-5;
+A=1e-4;
 p=3;
-v
-%m=3;
+v=1000;
+m=3;
 k=m;
 m
+
+
+
+task_iter = 10:25:110
+
+arr_opt_no_miss_cnt = zeros(1, length(task_iter));
+arr_opt_miss_cnt =  zeros(1, length(task_iter));
+arr_static_no_miss_cnt =  zeros(1, length(task_iter));
+arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
+arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
+arr_opt_enegery_used = zeros(1, length(task_iter));
+arr_static_enegery_used = zeros(1, length(task_iter));
+arr_task_iter_cnt = 1;
+
+
+for new_t = task_iter 
+    
+   
 suc_solved = 0;
-total_iter = 100;
+total_iter = 1000;
 not_fea = 1;
+
 while not_fea 
   first = 0;
-
-  B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
-  B = randi([8 64],m,m);
+  B = randi([8 64],m,m);%link rate (task per second)
   B(eye(size(B))~=0)=10e5;
-  f =  randi([18 24],1,m)*150;%(MHz)
-  N=  randi([10 20],1,m); % number of tasks(cars)
-  C =  randi([10 20],1,m); % server link capacity (# of tasks)
+  f =  randi([20 25],1,m)*150;%(MHz)
+  N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
+  C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
@@ -41,7 +66,7 @@ while not_fea
   end
 
 end
-
+new_t 
 
 opt_no_miss_cnt = 0;
 opt_miss_cnt = 0;
@@ -57,7 +82,7 @@ for iter = 1:total_iter
      iter;
      not_fea = 1;
      while not_fea 
-       N=  randi([10 20],1,m); % number of tasks(cars)
+       N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
        num_tasks_allowed = sum(floor(tau*f/x));
        num_tasks = sum(N);
        if num_tasks < num_tasks_allowed & num_tasks < sum(C)
@@ -67,14 +92,15 @@ for iter = 1:total_iter
        end
 
      end
+     
 
 
     obj = [];
     for i=1:m
         for j=1:m
-            obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
+            obj=[obj 1/B(i,j)+x/f(j)-Deadline/k]; 
         end
-     end
+    end
 %     for i=1:m
 %         for j=1:m
 %             obj=[obj x/f(j)*(A*f(j)^p+E)]; 
@@ -139,7 +165,7 @@ for iter = 1:total_iter
     end
 
     for i=1:k
-       b(cnt) = -D;
+       b(cnt) = -Deadline;
        cnt = cnt +1;
     end
 
@@ -179,7 +205,7 @@ for iter = 1:total_iter
             for j=1:k
                lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
             end 
-            opt_lateness=sum(lateness,2)-D;
+            opt_lateness=sum(lateness,2)-Deadline;
         end
 
 
@@ -188,7 +214,7 @@ for iter = 1:total_iter
         no_opt_lateness = zeros(m,1);
 
         for i=1:m    
-            no_opt_lateness(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+            no_opt_lateness(i)=N(i)* ( 1/B(i,i) + x/f(i) )-Deadline;
         end
 
 
@@ -219,7 +245,7 @@ for iter = 1:total_iter
                 if final_dist2(i,j)>0
                     for jj=1:final_dist2(i,j)
                         time_passed=time_passed+(1/B(j,i)+x/f(i));
-                        if  time_passed <= D
+                        if  time_passed <= Deadline
                             opt_no_miss_cnt = opt_no_miss_cnt + 1;
                         else
                             opt_miss_cnt = opt_miss_cnt + 1;
@@ -228,7 +254,7 @@ for iter = 1:total_iter
                 end
                lateness(i,j) = final_dist2(i,j)*(1/B(j,i)+x/f(i));
             end 
-            opt_lateness=sum(lateness,2)-D;
+            opt_lateness=sum(lateness,2)-Deadline;
         end
 
 
@@ -242,7 +268,7 @@ for iter = 1:total_iter
             for kk= 1:N(i)
                 if C(i)>=kk
                     time_passed = time_passed +  1/B(i,i) + x/f(i);
-                    if  time_passed <= D
+                    if  time_passed <= Deadline
                         static_no_miss_cnt = static_no_miss_cnt + 1;
                     else
                         static_miss_cnt_t_limit  = static_miss_cnt_t_limit  + 1;
@@ -252,7 +278,7 @@ for iter = 1:total_iter
                 end
 
             end
-            final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-D;
+            final_lateness2(i)=N(i)* ( 1/B(i,i) + x/f(i) )-Deadline;
         end
         
         % random
@@ -301,19 +327,42 @@ for iter = 1:total_iter
 
 
 end
+
+
+
 toc
 
 solved_percen = suc_solved/total_iter 
 total_iter 
-opt_miss_cnt
-opt_no_miss_cnt
+
+arr_opt_miss_cnt(arr_task_iter_cnt)=opt_miss_cnt;
+arr_opt_no_miss_cnt(arr_task_iter_cnt)=opt_no_miss_cnt;
+
+arr_static_miss_cnt_c_limit(arr_task_iter_cnt)=static_miss_cnt_c_limit;
+arr_static_miss_cnt_t_limit(arr_task_iter_cnt)=static_miss_cnt_t_limit;
+arr_static_no_miss_cnt(arr_task_iter_cnt)=static_no_miss_cnt;
+
+arr_opt_enegery_used(arr_task_iter_cnt)=opt_enegery_used;
+arr_static_enegery_used(arr_task_iter_cnt)=static_enegery_used; 
+arr_task_iter_cnt=arr_task_iter_cnt+1;
+end
 
 
-static_miss_cnt_c_limit
-static_miss_cnt_t_limit
-static_no_miss_cnt
+arr_opt_miss_cnt
+arr_opt_no_miss_cnt
 
-opt_enegery_used
-static_enegery_used 
+arr_static_miss_cnt_c_limit
+arr_static_miss_cnt_t_limit
+arr_static_no_miss_cnt
+
+arr_opt_enegery_used
+arr_static_enegery_used
+
+
+
+
 display('en')
 [m A]
+
+diary off
+

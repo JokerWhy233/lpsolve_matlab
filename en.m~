@@ -1,12 +1,15 @@
 %m by k
 
 clear
-% clc
+clc
 % close all
 delete('test.txt')
 diary('test.txt')
 diary on
 format long
+
+rng('default');
+rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
 % tau = 0.35; % allocated cpu time (sec)
@@ -20,14 +23,14 @@ x= 10; % Mcycles per task
 E=50;
 A=1e-4;
 p=3;
-v=10;
+v=1000;
 m=3;
 k=m;
 m
 
 
 
-task_iter = 10:10:50;
+task_iter = 10:25:110
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
@@ -43,16 +46,14 @@ for new_t = task_iter
     
    
 suc_solved = 0;
-total_iter = 100;
+total_iter = 1;
 not_fea = 1;
 
 while not_fea 
   first = 0;
-
-  B = [10e5 8 24 ;16 10e5 8;24 16 10e5]; % link rate (task per second)
-  B = randi([8 64],m,m);
+  B = randi([8 64],m,m);%link rate (task per second)
   B(eye(size(B))~=0)=10e5;
-  f =  randi([18 24],1,m)*150;%(MHz)
+  f =  randi([20 25],1,m)*150;%(MHz)
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   
@@ -97,7 +98,7 @@ for iter = 1:total_iter
     obj = [];
 %     for i=1:m
 %         for j=1:m
-%             obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
+%             obj=[obj 1/B(i,j)+x/f(j)-Deadline/k]; 
 %         end
 %     end
     for i=1:m
@@ -338,16 +339,30 @@ arr_opt_miss_cnt(arr_task_iter_cnt)=opt_miss_cnt;
 arr_opt_no_miss_cnt(arr_task_iter_cnt)=opt_no_miss_cnt;
 
 arr_static_miss_cnt_c_limit(arr_task_iter_cnt)=static_miss_cnt_c_limit;
-static_miss_cnt_t_limit(arr_task_iter_cnt)=static_miss_cnt_t_limit;
-static_no_miss_cnt(arr_task_iter_cnt)=static_no_miss_cnt;
+arr_static_miss_cnt_t_limit(arr_task_iter_cnt)=static_miss_cnt_t_limit;
+arr_static_no_miss_cnt(arr_task_iter_cnt)=static_no_miss_cnt;
 
-opt_enegery_used(arr_task_iter_cnt)=opt_enegery_used;
-static_enegery_used(arr_task_iter_cnt)=static_enegery_used; 
+arr_opt_enegery_used(arr_task_iter_cnt)=opt_enegery_used;
+arr_static_enegery_used(arr_task_iter_cnt)=static_enegery_used; 
 arr_task_iter_cnt=arr_task_iter_cnt+1;
 end
-diary off
+
+
+arr_opt_miss_cnt
+arr_opt_no_miss_cnt
+
+arr_static_miss_cnt_c_limit
+arr_static_miss_cnt_t_limit
+arr_static_no_miss_cnt
+
+arr_opt_enegery_used
+arr_static_enegery_used
+
+
+
+
 display('en')
 [m A]
 
-opt_enegery_used
+diary off
 
