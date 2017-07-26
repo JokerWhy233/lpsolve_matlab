@@ -27,7 +27,7 @@ m
 
 
 
-task_iter = 10:20:90;%110;
+task_iter = 10:20:110;
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
@@ -344,16 +344,16 @@ arr_static_enegery_used(arr_task_iter_cnt)=static_enegery_used;
 arr_task_iter_cnt=arr_task_iter_cnt+1;
 end
 
-% 
-% arr_opt_miss_cnt(arr_task_iter_cnt)=opt_miss_cnt
-% arr_opt_no_miss_cnt(arr_task_iter_cnt)=opt_no_miss_cnt
-% 
-% arr_static_miss_cnt_c_limit(arr_task_iter_cnt)=static_miss_cnt_c_limit
-% arr_static_miss_cnt_t_limit(arr_task_iter_cnt)=static_miss_cnt_t_limit
-% arr_static_no_miss_cnt(arr_task_iter_cnt)=static_no_miss_cnt
-% 
-% arr_opt_enegery_used(arr_task_iter_cnt)=opt_enegery_used
-% arr_static_enegery_used(arr_task_iter_cnt)=static_enegery_used
+
+arr_opt_miss_cnt
+arr_opt_no_miss_cnt
+
+arr_static_miss_cnt_c_limit
+arr_static_miss_cnt_t_limit
+arr_static_no_miss_cnt
+
+arr_opt_enegery_used
+arr_static_enegery_used
 
 
 
