@@ -93,16 +93,16 @@ for iter = 1:total_iter
 
 
     obj = [];
-%     for i=1:m
-%         for j=1:m
-%             obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
-%         end
-%     end
     for i=1:m
         for j=1:m
-            obj=[obj x/f(j)*(A*f(j)^p+E)]; 
+            obj=[obj 1/B(i,j)+x/f(j)-D/k]; 
         end
     end
+%     for i=1:m
+%         for j=1:m
+%             obj=[obj x/f(j)*(A*f(j)^p+E)]; 
+%         end
+%     end
     for i=1:m
        obj=[obj v]; 
     end
