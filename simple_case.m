@@ -55,9 +55,9 @@ while not_fea
   B(eye(size(B))~=0)=10e5;
   B = [32 32 ; 32 32];
   f =  randi([20 25],1,m)*150;%(MHz)
-  f = [2700 3600 ];
+  f = [2700 3600];
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
-  N=[0 1 ];
+  N=[1 0 ];
   
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   C = [1 1 ];
