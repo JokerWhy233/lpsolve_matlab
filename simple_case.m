@@ -184,11 +184,12 @@ for iter = 1:total_iter
     lp = lp_maker(obj, a, b, e,vlb, vub, xint);
     %tic
     solvestat = mxlpsolve('solve', lp);
+    
     %toc
     
     if(solvestat==0)
         suc_solved = suc_solved +1;
-        final_obj = mxlpsolve('get_objective', lp);
+        final_obj = mxlpsolve('get_objective', lp)
         res = mxlpsolve('get_variables', lp);
         cons = mxlpsolve('get_constraints', lp);
         %final_y1_cons=cons(end-2m+1:end-m)'
