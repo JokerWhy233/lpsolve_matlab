@@ -23,7 +23,7 @@ x= 10; % Mcycles per task
 E=50;
 A=1e-4;
 p=2;
-v=1000;
+v=10000000;
 m=2;
 k=m;
 m
@@ -195,7 +195,7 @@ for iter = 1:total_iter
         final_y2_cons=cons(end-m+1:end)';
         dist=reshape(res,m,m+1)';
         final_dist=sparse(dist(1:m,:));
-        final_dist2=sparse(dist(1:m,:)');
+        final_dist2=sparse(dist(1:m,:)')
         lateness =zeros(m,m);
         opt_lateness = zeros(1,m);
 
