@@ -55,7 +55,7 @@ while not_fea
   B(eye(size(B))~=0)=10e5;
   B = [32 32 ; 32 32];
   f =  randi([20 25],1,m)*150;%(MHz)
-  f = [10000 100];
+  f = [10000 5000];
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
   N=[0 2 ];
   
@@ -101,16 +101,16 @@ for iter = 1:total_iter
 
 
     obj = [];
-    for i=1:m
-        for j=1:m
-            obj=[obj 1/B(i,j)+x/f(j)-Deadline/k]; 
-        end
-    end
 %     for i=1:m
 %         for j=1:m
-%             obj=[obj x/f(j)*(A*(f(j)/150)^p+E)]; 
+%             obj=[obj 1/B(i,j)+x/f(j)-Deadline/k]; 
 %         end
 %     end
+    for i=1:m
+        for j=1:m
+            obj=[obj x/f(j)*(A*(f(j)/150)^p+E)]; 
+        end
+    end
     for i=1:m
        obj=[obj v]; 
     end
