@@ -1,5 +1,5 @@
 source /usr/usc/matlab/default/setup.sh
 export LD_LIBRARY_PATH="/home/rcf-40/chen116/dynamo/lpsolve_matlab"
-screen -dmS vc sh
-screen -S vc -X stuff "matlab -nodesktop
-"
+screen -S vc -d -m
+screen -r vc -X stuff $'matlab -nodesktop \n'
+
