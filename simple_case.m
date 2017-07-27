@@ -108,7 +108,7 @@ for iter = 1:total_iter
 %     end
     for i=1:m
         for j=1:m
-            obj=[obj (A*(f(j)/150)^p+E)]; %x/f(j)*
+            obj=[obj f(j)];%x/f(j)*(A*(f(j)/150)^p+E)]; 
         end
     end
     for i=1:m
