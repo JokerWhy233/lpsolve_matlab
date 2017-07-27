@@ -60,7 +60,7 @@ while not_fea
   N=[0 2];
   
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
-  C = [1 1 ];
+  C = [2 2 ];
   
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
