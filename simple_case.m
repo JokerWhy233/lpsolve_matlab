@@ -60,11 +60,11 @@ while not_fea
   N=[0 2];
   
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
-  C = [2 2 ];
+  C = [1 1 ];
   
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
-  if num_tasks < num_tasks_allowed & num_tasks < sum(C)
+  if num_tasks <= num_tasks_allowed & num_tasks <= sum(C)
     not_fea = 0;
   else
     not_fea = 1;
@@ -90,7 +90,7 @@ for iter = 1:total_iter
        %N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
        num_tasks_allowed = sum(floor(tau*f/x));
        num_tasks = sum(N);
-       if num_tasks < num_tasks_allowed & num_tasks < sum(C)
+       if num_tasks <= num_tasks_allowed & num_tasks <= sum(C)
          not_fea = 0;
        else
          not_fea = 1;
