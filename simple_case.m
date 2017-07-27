@@ -57,7 +57,7 @@ while not_fea
   f =  randi([20 25],1,m)*150;%(MHz)
   f = [8700 3600];
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
-  N=[0 1];
+  N=[0 2];
   
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   C = [1 1 ];
@@ -194,8 +194,8 @@ for iter = 1:total_iter
         %final_y1_cons=cons(end-2m+1:end-m)'
         final_y2_cons=cons(end-m+1:end)';
         dist=reshape(res,m,m+1)';
-        final_dist=sparse(dist(1:m,:));
-        final_dist2=sparse(dist(1:m,:)')
+        final_dist=sparse(dist(1:m,:));   %(x,y)=z -> x give y z tasks
+        final_dist2=sparse(dist(1:m,:)'); %(x,y)=z -> y give x z tasks
         lateness =zeros(m,m);
         opt_lateness = zeros(1,m);
 
@@ -362,7 +362,7 @@ arr_static_no_miss_cnt
 
 arr_opt_enegery_used
 arr_static_enegery_used
-
+final_dist
 
 
 
