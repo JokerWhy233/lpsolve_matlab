@@ -23,11 +23,12 @@ x= 50; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-v=1e8;
+v=1e3;
 m=5;
 k=m;
 m
-
+upper_N = 20;
+upper_C = 10;
 
 
 task_iter = 10:10
@@ -59,12 +60,12 @@ not_fea = 1;
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
   f(end)=30*150;
-  N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
+  N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
   N(end)=0;
-  C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
+  C =  randi([new_t new_t+upper_C],1,m); % server link capacity (# of tasks)
   C(end)=inf;
-  num_tasks_allowed = sum(floor(tau*f/x));
-  num_tasks = sum(N);
+%   num_tasks_allowed = sum(floor(tau*f/x));
+%   num_tasks = sum(N);
 %   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
 %     not_fea = 0;
 %   else
@@ -88,16 +89,15 @@ for iter = 1:total_iter
      iter;
      not_fea = 1;
 %      while not_fea 
-       N=  randi([new_t new_t+20],1,m); % number of tasks(cars)
+       N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
-       num_tasks_allowed = sum(floor(tau*f/x));
-       num_tasks = sum(N);
-       if num_tasks < num_tasks_allowed & num_tasks < sum(C)
-         not_fea = 0;
-       else
-         not_fea = 1;
-       end
-
+%        num_tasks_allowed = sum(floor(tau*f/x));
+%        num_tasks = sum(N);
+%        if num_tasks < num_tasks_allowed & num_tasks < sum(C)
+%          not_fea = 0;
+%        else
+%          not_fea = 1;
+%        end
 %      end
      
 
