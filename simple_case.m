@@ -23,7 +23,7 @@ x= 10; % Mcycles per task
 E=50;
 A=10;
 p=3;
-v=0.0000001;
+v=10;
 m=2;
 k=m;
 m
