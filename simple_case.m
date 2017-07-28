@@ -364,6 +364,7 @@ end
 % arr_opt_enegery_used
 % arr_static_enegery_used
 final_dist
+final_obj
 v
 opt_miss_vs_no_miss=[arr_opt_miss_cnt arr_opt_no_miss_cnt]
 
