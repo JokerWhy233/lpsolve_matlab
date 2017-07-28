@@ -34,7 +34,7 @@ task_iter = 10:10
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
-arr_static_no_miss_cnt =  zeros;(1, length(task_iter));
+arr_static_no_miss_cnt =  zeros(1, length(task_iter));
 arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
 arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
 arr_opt_enegery_used = zeros(1, length(task_iter));
