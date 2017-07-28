@@ -364,7 +364,7 @@ arr_opt_enegery_used
 arr_static_enegery_used
 
 
-
+final_dist
 
 display('en')
 [m A]
