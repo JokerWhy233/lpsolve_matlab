@@ -16,15 +16,15 @@ rng('default');
 % x= 50; % Mcycles per task
 % v=10;
 
-Deadline = 0.4;% deadline (sec)
-tau = 0.38; % allocated cpu time (sec)
-x= 50; % Mcycles per task
+Deadline = 0.5;% deadline (sec)
+tau = 0.48; % allocated cpu time (sec)
+x= 25; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
 p=3;
-v=1000000;
-m=5;
+v=10;
+m=2;
 k=m;
 m
 
@@ -58,7 +58,7 @@ while not_fea
   end
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
-  %f(end)=30*150;
+  f(end)=30*150;
   N=  randi([new_t new_t+20],1,m); % number of tasks(cars)
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   C(end)=inf;
