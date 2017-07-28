@@ -37,7 +37,7 @@ mxlpsolve('set_verbose', lp_handle, 3);
 mxlpsolve('set_mat', lp_handle, a);
 mxlpsolve('set_rh_vec', lp_handle, b);
 mxlpsolve('set_obj_fn', lp_handle, f);
-mxlpsolve('set_maxim', lp_handle); % default is solving minimum lp.
+mxlpsolve('set_min', lp_handle); % default is solving minimum lp.
 
 for i = 1:length(e)
   if e(i) < 0
