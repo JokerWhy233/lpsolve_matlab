@@ -194,7 +194,7 @@ for iter = 1:total_iter
         %final_y1_cons=cons(end-2m+1:end-m)'
         final_y2_cons=cons(end-m+1:end)';
         dist=reshape(res,m,m+1)';
-        final_dist=sparse(dist(1:m,:));
+        final_dist=sparse(dist(1:m,:))%(x,y)=z -> x give y z tasks
         final_dist2=sparse(dist(1:m,:)');
         lateness =zeros(m,m);
         opt_lateness = zeros(1,m);
