@@ -18,7 +18,7 @@ rng('default');
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.48; % allocated cpu time (sec)
-x= 50; % Mcycles per task
+x= 25; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
@@ -31,7 +31,7 @@ upper_N = 20;
 upper_C = 10;
 
 
-task_iter = 10:10
+task_iter = 20:20
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
