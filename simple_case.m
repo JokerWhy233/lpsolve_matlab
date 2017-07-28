@@ -181,7 +181,7 @@ for iter = 1:total_iter
     vub=[];
     xint=1:m*m;
 
-    lp = lp_maker(obj, a, b, e,vlb, vub, xint);
+    lp = lp_maker(-obj, a, b, e,vlb, vub, xint);
     %tic
     solvestat = mxlpsolve('solve', lp);
     
