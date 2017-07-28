@@ -23,7 +23,7 @@ x= 50; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-v=1000;
+v=10;
 m=5;
 k=m;
 m
@@ -31,7 +31,7 @@ upper_N = 20;
 upper_C = 10;
 
 
-task_iter = 20:20
+task_iter = 20:20:80
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
@@ -103,16 +103,16 @@ for iter = 1:total_iter
 
 
     obj = [];
-    for i=1:m
-        for j=1:m
-            obj=[obj 1/B(i,j)+x/f(j)-Deadline/k]; 
-        end
-    end
 %     for i=1:m
 %         for j=1:m
-%             obj=[obj x/f(j)*(A*(f(j)/1000)^p+E)]; 
+%             obj=[obj 1/B(i,j)+x/f(j)-Deadline/k]; 
 %         end
 %     end
+    for i=1:m
+        for j=1:m
+            obj=[obj x/f(j)*(A*(f(j)/1000)^p+E)]; 
+        end
+    end
     for i=1:m
        obj=[obj v]; 
     end
