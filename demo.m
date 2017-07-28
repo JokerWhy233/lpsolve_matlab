@@ -354,6 +354,7 @@ arr_static_enegery_used(arr_task_iter_cnt)=static_enegery_used;
 arr_task_iter_cnt=arr_task_iter_cnt+1;
 end
 
+final_dist
 
 [arr_opt_miss_cnt arr_opt_no_miss_cnt]
 

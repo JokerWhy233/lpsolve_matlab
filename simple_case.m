@@ -363,6 +363,8 @@ end
 % 
 % arr_opt_enegery_used
 % arr_static_enegery_used
+final_dist
+
 [arr_opt_miss_cnt arr_opt_no_miss_cnt]
 
 
@@ -371,7 +373,6 @@ end
 
 
 [arr_opt_enegery_used arr_static_enegery_used]
-final_dist
 
 
 
