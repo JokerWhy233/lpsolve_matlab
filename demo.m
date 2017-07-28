@@ -8,7 +8,7 @@ diary('test.txt')
 diary on
 format long
 
-%rng('default');
+rng('default');
 %rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
