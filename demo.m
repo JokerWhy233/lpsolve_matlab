@@ -175,7 +175,7 @@ for iter = 1:total_iter
     end
 
     e = -1*ones(size(a,1),1);
-    e(2*m+1:3*m)=-1;
+    e(2*m+1:3*m)=0;
     e(3*m+1:end)=1;
     vlb=[];
     vub=[];
