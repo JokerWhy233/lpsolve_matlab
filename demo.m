@@ -52,16 +52,16 @@ not_fea = 1;
 while not_fea 
   first = 0;
   B = randi([8 64],m,m);%link rate (task per second)
-  for i=1:m
-      B(m,end) = 2;
-      B(end,m) = 2;
-  end
+%   for i=1:m
+%       B(m,end) = 2;
+%       B(end,m) = 2;
+%   end
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
   f(end)=30*150;
-  N=  randi([new_t new_t+50],1,m); % number of tasks(cars)
-  C =  randi([new_t new_t+50],1,m); % server link capacity (# of tasks)
-  C(end)=inf;
+  N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
+  C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
+  %C(end)=inf;
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
