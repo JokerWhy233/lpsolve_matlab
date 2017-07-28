@@ -356,14 +356,14 @@ end
 
 final_dist
 
-[arr_opt_miss_cnt arr_opt_no_miss_cnt]
+opt_miss_and_no_miss=[arr_opt_miss_cnt arr_opt_no_miss_cnt]
 
 
-[arr_static_miss_cnt_c_limit+arr_static_miss_cnt_t_limit arr_static_no_miss_cnt]
+static_miss_and_no_miss=[arr_static_miss_cnt_c_limit+arr_static_miss_cnt_t_limit arr_static_no_miss_cnt]
 
 
 
-[arr_opt_enegery_used arr_static_enegery_used]
+opt_en_and_static_en=[arr_opt_enegery_used arr_static_enegery_used]
 
 
 
