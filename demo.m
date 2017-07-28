@@ -21,9 +21,9 @@ tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
 %v=10; 
 E=50;
-A=1e-4;
+A=1;
 p=2;
-v=1000;
+v=10;
 m=3;
 k=m;
 m
