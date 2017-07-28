@@ -319,7 +319,7 @@ for iter = 1:total_iter
          
         % static
         for i=1:m         
-                static_enegery_used=static_enegery_used+  (A*f(i)/1000)^p+E)*N(i)*x/f(i);  
+                static_enegery_used=static_enegery_used+  (A*(f(i)/1000)^p+E)*N(i)*x/f(i);  
         end           
         
         
