@@ -314,13 +314,13 @@ for iter = 1:total_iter
 
         for i=1:m         
             for j=1:k
-                opt_enegery_used=opt_enegery_used+  (A*f(i)/1000)^p+E)*final_dist2(i,j)*x/f(i);  
+                opt_enegery_used=opt_enegery_used+  (A*(f(i)/1000)^p+E)*final_dist2(i,j)*x/f(i);  
             end 
         end           
          
         % static
         for i=1:m         
-                static_enegery_used=static_enegery_used+  (A*f(i)/1000)^p+E)*N(i)*x/f(i);  
+                static_enegery_used=static_enegery_used+  (A*(f(i)/1000)^p+E)*N(i)*x/f(i);  
         end           
         
         
