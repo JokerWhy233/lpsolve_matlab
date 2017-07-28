@@ -46,7 +46,7 @@ for new_t = task_iter
     
    
 suc_solved = 0;
-total_iter = 1;
+total_iter = 100;
 not_fea = 1;
 
 while not_fea 
