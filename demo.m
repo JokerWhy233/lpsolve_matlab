@@ -355,21 +355,21 @@ arr_task_iter_cnt=arr_task_iter_cnt+1;
 end
 
 
-arr_opt_miss_cnt
-arr_opt_no_miss_cnt
+[arr_opt_miss_cnt arr_opt_no_miss_cnt]
 
-arr_static_miss_cnt_c_limit
-arr_static_miss_cnt_t_limit
-arr_static_no_miss_cnt
 
-arr_opt_enegery_used
-arr_static_enegery_used
+[arr_static_miss_cnt_c_limit+arr_static_miss_cnt_t_limit arr_static_no_miss_cnt]
+
+
+
+[arr_opt_enegery_used arr_static_enegery_used]
+
 
 
 final_dist
 
 display('en')
-[m A]
+%[m A]
 
 diary off
 
