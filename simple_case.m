@@ -18,12 +18,12 @@ rng(1);
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.48; % allocated cpu time (sec)
-x= 10; % Mcycles per task
+x= 25; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
 p=3;
-v=1000;
+v=10;
 m=2;
 k=m;
 m
@@ -53,15 +53,15 @@ while not_fea
   first = 0;
   B = randi([8 64],m,m);%link rate (task per second)
   B(eye(size(B))~=0)=10e5;
-%   B = [32 32 ; 32 32];
+   B = [32 32 ; 32 32];
   f =  randi([20 25],1,m)*150;%(MHz)
-%   f = [5000 10000];
+   f = [2700 3600];
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
-%   N=[0 1 ];
+   N=[0 1 ];
   
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   C(end)=inf;
-  
+  C = [1 1];
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
   if num_tasks <= num_tasks_allowed & num_tasks <= sum(C)
@@ -87,7 +87,7 @@ for iter = 1:total_iter
      iter;
      not_fea = 1;
      while not_fea 
-       N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
+      % N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
        num_tasks_allowed = sum(floor(tau*f/x));
        num_tasks = sum(N);
        if num_tasks <= num_tasks_allowed & num_tasks <= sum(C)
