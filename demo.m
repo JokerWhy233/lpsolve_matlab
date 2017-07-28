@@ -8,8 +8,8 @@ diary('test.txt')
 diary on
 format long
 
-rng('default');
-rng(1);
+%rng('default');
+%rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
 % tau = 0.35; % allocated cpu time (sec)
@@ -20,9 +20,9 @@ Deadline = 0.4;% deadline (sec)
 tau = 0.38; % allocated cpu time (sec)
 x= 50; % Mcycles per task
 %v=10; 
-E=50;
-A=1;
-p=2;
+E=70;
+A=2.37;
+p=3;
 v=10;
 m=3;
 k=m;
@@ -58,7 +58,7 @@ while not_fea
   end
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
-  f(end)=30*150;
+  %f(end)=30*150;
   N=  randi([new_t new_t+50],1,m); % number of tasks(cars)
   C =  randi([new_t new_t+20],1,m); % server link capacity (# of tasks)
   C(end)=inf;
@@ -108,7 +108,7 @@ for iter = 1:total_iter
 %     end
     for i=1:m
         for j=1:m
-            obj=[obj x/f(j)*(A*(f(j))^p+E)]; 
+            obj=[obj x/f(j)*(A*(f(j)/1000)^p+E)]; 
         end
     end
     for i=1:m
