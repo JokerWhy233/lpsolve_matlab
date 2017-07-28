@@ -368,8 +368,7 @@ opt_en_vs_static_en=[arr_opt_enegery_used arr_static_enegery_used]
 
 
 
-display('en')
-%[m A]
-
+% display('en')
+v
 diary off
 
