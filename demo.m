@@ -367,7 +367,6 @@ final_dist
 
 
 
-final_dist
 
 display('en')
 %[m A]
