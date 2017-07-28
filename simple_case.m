@@ -57,7 +57,7 @@ while not_fea
   f =  randi([20 25],1,m)*150;%(MHz)
   f = [5000 10000];
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
-  N=[0 2 ];
+  N=[0 1 ];
   
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   C = [1 1 ];
