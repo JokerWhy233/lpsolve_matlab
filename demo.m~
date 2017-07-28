@@ -16,21 +16,21 @@ rng(1);
 % x= 50; % Mcycles per task
 % v=10;
 
-Deadline = 0.5;% deadline (sec)
-tau = 0.48; % allocated cpu time (sec)
-x= 10; % Mcycles per task
+Deadline = 0.4;% deadline (sec)
+tau = 0.38; % allocated cpu time (sec)
+x= 50; % Mcycles per task
 %v=10; 
 E=50;
-A=0.00001;
-p=3;
+A=1e-4;
+p=2;
 v=1000;
-m=2;
+m=3;
 k=m;
 m
 
 
 
-task_iter = 1
+task_iter = 10:25:110
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
@@ -52,19 +52,16 @@ not_fea = 1;
 while not_fea 
   first = 0;
   B = randi([8 64],m,m);%link rate (task per second)
+  for i=1:m
+      B(m,end)=0
   B(eye(size(B))~=0)=10e5;
-%   B = [32 32 ; 32 32];
-  f =  randi([20 25],1,m)*150;%(MHz)
-%   f = [5000 10000];
+  f =  randi([10 20],1,m)*150;%(MHz)
   N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
-%   N=[0 1 ];
-  
   C =  randi([new_t new_t+10],1,m); % server link capacity (# of tasks)
   C(end)=inf;
-  
   num_tasks_allowed = sum(floor(tau*f/x));
   num_tasks = sum(N);
-  if num_tasks <= num_tasks_allowed & num_tasks <= sum(C)
+  if num_tasks < num_tasks_allowed & num_tasks < sum(C)
     not_fea = 0;
   else
     not_fea = 1;
@@ -90,7 +87,7 @@ for iter = 1:total_iter
        N=  randi([new_t new_t+10],1,m); % number of tasks(cars)
        num_tasks_allowed = sum(floor(tau*f/x));
        num_tasks = sum(N);
-       if num_tasks <= num_tasks_allowed & num_tasks <= sum(C)
+       if num_tasks < num_tasks_allowed & num_tasks < sum(C)
          not_fea = 0;
        else
          not_fea = 1;
@@ -108,7 +105,7 @@ for iter = 1:total_iter
 %     end
     for i=1:m
         for j=1:m
-            obj=[obj x/f(j)*(A*(f(j)/150)^p+E)]; 
+            obj=[obj x/f(j)*(A*(f(j)/150)^p+E)-v^9/(A*(f(j)/150)^p+E)]; 
         end
     end
     for i=1:m
@@ -175,7 +172,7 @@ for iter = 1:total_iter
     end
 
     e = -1*ones(size(a,1),1);
-    e(2*m+1:3*m)=0;
+    e(2*m+1:3*m)=-1;
     e(3*m+1:end)=1;
     vlb=[];
     vub=[];
@@ -184,19 +181,18 @@ for iter = 1:total_iter
     lp = lp_maker(-obj, a, b, e,vlb, vub, xint);
     %tic
     solvestat = mxlpsolve('solve', lp);
-    
     %toc
     
     if(solvestat==0)
         suc_solved = suc_solved +1;
-        final_obj = mxlpsolve('get_objective', lp)
+        final_obj = mxlpsolve('get_objective', lp);
         res = mxlpsolve('get_variables', lp);
         cons = mxlpsolve('get_constraints', lp);
         %final_y1_cons=cons(end-2m+1:end-m)'
         final_y2_cons=cons(end-m+1:end)';
         dist=reshape(res,m,m+1)';
-        final_dist=sparse(dist(1:m,:));   %(x,y)=z -> x give y z tasks
-        final_dist2=sparse(dist(1:m,:)'); %(x,y)=z -> y give x z tasks
+        final_dist=sparse(dist(1:m,:));
+        final_dist2=sparse(dist(1:m,:)');
         lateness =zeros(m,m);
         opt_lateness = zeros(1,m);
 
@@ -363,7 +359,7 @@ arr_static_no_miss_cnt
 
 arr_opt_enegery_used
 arr_static_enegery_used
-final_dist
+
 
 
 
