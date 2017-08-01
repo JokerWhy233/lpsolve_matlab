@@ -31,7 +31,7 @@ upper_N = 20;
 upper_C = 10;
 
 
-task_iter = 20
+task_iter = 20;
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
@@ -375,5 +375,5 @@ opt_en_vs_static_en=[arr_opt_enegery_used ;arr_static_enegery_used]
 % display('en')
 
 diary off
-save('var.mat','f','C','N_mat');
+save('var.mat','f','C','B','N_mat');
 
