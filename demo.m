@@ -18,7 +18,7 @@ rng('default');
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.48; % allocated cpu time (sec)
-x= 10; % Mcycles per task
+x= 50; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
@@ -27,8 +27,8 @@ v=100;
 m=5;
 k=m;
 m
-upper_N = 30;
-upper_C = 30;
+upper_N = 20;
+upper_C = 10;
 
 
 task_iter = 20;
@@ -249,8 +249,17 @@ for iter = 1:total_iter
         mxlpsolve('delete_lp', lp);
 
 
+        % check overall earliness
+        for i=1:m
+            time_passed = 0;
 
-
+            for j=1:k
+                if final_dist2(i,j)>0
+                    time_passed=time_passed+(1/B(j,i)+x/f(i));
+                end
+            end
+            
+        end
         %check deadline misses
 
         % my opt
@@ -333,6 +342,8 @@ for iter = 1:total_iter
                 static_enegery_used=static_enegery_used+  (A*(f(i)/1000)^p+E)*N(i)*x/f(i);  
         end           
         
+        
+     
         
         
     else
