@@ -28,7 +28,7 @@ m=5;
 k=m;
 m
 upper_N = 25;
-upper_C = 25;
+upper_C = 20;
 
 
 task_iter = 20;
