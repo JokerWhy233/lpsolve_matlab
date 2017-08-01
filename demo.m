@@ -64,7 +64,7 @@ not_fea = 1;
   end
   B(eye(size(B))~=0)=10e5;
   f =  randi([27 36],1,m)*100;%(MHz)
-  f = [2700 3000 3200 3500 0];
+  %f = [2700 3000 3200 3500 0];
   f(end)=30*150;
   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
   N(end)=0;
