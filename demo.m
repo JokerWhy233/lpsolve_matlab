@@ -62,6 +62,7 @@ not_fea = 1;
   f(end)=30*150;
   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
   N(end)=0;
+  
   C =  randi([new_t new_t+upper_C],1,m); % server link capacity (# of tasks)
   C(end)=inf;
 %   num_tasks_allowed = sum(floor(tau*f/x));
@@ -91,6 +92,9 @@ for iter = 1:total_iter
 %      while not_fea 
        N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
+       N_mat(iter,:)=N;
+       
+       
 %        num_tasks_allowed = sum(floor(tau*f/x));
 %        num_tasks = sum(N);
 %        if num_tasks < num_tasks_allowed & num_tasks < sum(C)
@@ -371,4 +375,5 @@ opt_en_vs_static_en=[arr_opt_enegery_used ;arr_static_enegery_used]
 % display('en')
 
 diary off
+save('var.mat','f','C','N_mat');
 

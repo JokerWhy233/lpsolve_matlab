@@ -31,7 +31,7 @@ upper_N = 20;
 upper_C = 10;
 
 
-task_iter = 20:20
+task_iter = 20:10:40
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
@@ -60,8 +60,9 @@ not_fea = 1;
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
   f(end)=30*150;
-  N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
-  N(end)=0;
+%   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
+%   N(end)=0;
+  
   C =  randi([new_t new_t+upper_C],1,m); % server link capacity (# of tasks)
   C(end)=inf;
 %   num_tasks_allowed = sum(floor(tau*f/x));
@@ -91,6 +92,8 @@ for iter = 1:total_iter
 %      while not_fea 
        N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
+       
+       
 %        num_tasks_allowed = sum(floor(tau*f/x));
 %        num_tasks = sum(N);
 %        if num_tasks < num_tasks_allowed & num_tasks < sum(C)
@@ -356,14 +359,14 @@ end
 
 final_dist
 v
-opt_miss_vs_no_miss=[arr_opt_miss_cnt arr_opt_no_miss_cnt]
+opt_miss_vs_no_miss=[arr_opt_miss_cnt ;arr_opt_no_miss_cnt]
 
 
-static_miss_vs_no_miss=[arr_static_miss_cnt_c_limit+arr_static_miss_cnt_t_limit arr_static_no_miss_cnt]
+static_miss_vs_no_miss=[arr_static_miss_cnt_c_limit+arr_static_miss_cnt_t_limit ;arr_static_no_miss_cnt]
 
 
 
-opt_en_vs_static_en=[arr_opt_enegery_used arr_static_enegery_used]
+opt_en_vs_static_en=[arr_opt_enegery_used ;arr_static_enegery_used]
 
 
 
