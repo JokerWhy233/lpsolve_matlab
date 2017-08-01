@@ -54,8 +54,8 @@ not_fea = 1;
   first = 0;
   B = randi([8 64],m,m);%link rate (task per second)
   for i=1:m
-      B(m,end) = 2;
-      B(end,m) = 2;
+      B(i,end) = 2;
+      B(end,i) = 2;
   end
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
