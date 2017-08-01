@@ -18,7 +18,7 @@ rng('default');
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.48; % allocated cpu time (sec)
-x= 50; % Mcycles per task
+x= 10; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
@@ -27,8 +27,8 @@ v=100000;
 m=5;
 k=m;
 m
-upper_N = 20;
-upper_C = 20;
+upper_N = 30;
+upper_C = 30;
 
 
 task_iter = 20;
@@ -59,7 +59,7 @@ not_fea = 1;
   end
   for i=1:m
       for j=i:m
-        B(i,j)=B(j,i)
+        B(i,j)=B(j,i);
       end
   end
   B(eye(size(B))~=0)=10e5;
