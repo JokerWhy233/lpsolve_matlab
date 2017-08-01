@@ -57,6 +57,11 @@ not_fea = 1;
       B(i,end) = 2;
       B(end,i) = 2;
   end
+  for i=1:m
+      for j=i:m
+        B(i,j)=B(j,i)
+      end
+  end
   B(eye(size(B))~=0)=10e5;
   f =  randi([18 24],1,m)*150;%(MHz)
   f(end)=30*150;
