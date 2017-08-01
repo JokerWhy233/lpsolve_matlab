@@ -28,7 +28,7 @@ m=5;
 k=m;
 m
 upper_N = 20;
-upper_C = 10;
+upper_C = 20;
 
 
 task_iter = 20;
@@ -42,6 +42,24 @@ arr_opt_enegery_used = zeros(1, length(task_iter));
 arr_static_enegery_used = zeros(1, length(task_iter));
 arr_task_iter_cnt = 1;
 
+
+total_iter = 100;
+
+% check overall earliness
+        for i=1:m
+            time_passed = 0;
+            for j=1:k
+                if final_dist2(i,j)>0
+                    time_passed=time_passed+(1/B(j,i)+x/f(i));
+                end
+            end
+            
+        end
+
+
+
+
+%%
 
 for new_t = task_iter 
     
