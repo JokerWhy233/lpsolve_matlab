@@ -17,7 +17,7 @@ rng('default');
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.48; % allocated cpu time (sec)
-x= 40; % Mcycles per task
+x=40; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
@@ -85,7 +85,7 @@ for j = 1:length(N_mat)
         
 end
 miss_cnt
-no_miss_cnt
+no_miss_cnt;
 
 static_enegery_used
 
@@ -201,7 +201,7 @@ for j = 1:length(N_mat)
     time_tot = time_tot +sum(time_passed_ar);
 end
 miss_cnt
-no_miss_cnt
+no_miss_cnt;
 
 static_enegery_used
 time_tot 
