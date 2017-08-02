@@ -252,11 +252,11 @@ for iter = 1:total_iter
 
         % check overall earliness
         for i=1:m
-            time_passed = 0;
+            time_passed_tot = 0;
 
             for j=1:k
                 if final_dist2(i,j)>0
-                    time_passed=time_passed+(1/B(j,i)+x/f(i));
+                    time_passed_tot=time_passed_tot+(1/B(j,i)+x/f(i));
                 end
             end
             
@@ -385,7 +385,7 @@ static_miss_vs_no_miss=[arr_static_miss_cnt_c_limit+arr_static_miss_cnt_t_limit 
 
 
 opt_en_vs_static_en=[arr_opt_enegery_used ;arr_static_enegery_used]
-arr_task_iter_cnt
+time_passed_tot
 
 
 
