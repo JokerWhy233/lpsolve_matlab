@@ -42,7 +42,7 @@ arr_opt_enegery_used = zeros(1, length(task_iter));
 arr_static_enegery_used = zeros(1, length(task_iter));
 arr_task_iter_cnt = 1;
 
-
+time_passed_tot = 0;
 for new_t = task_iter 
     
    
@@ -251,8 +251,9 @@ for iter = 1:total_iter
 
 
         % check overall earliness
+        
         for i=1:m
-            time_passed_tot = 0;
+            
 
             for j=1:k
                 if final_dist2(i,j)>0
