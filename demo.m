@@ -18,7 +18,7 @@ rng('default');
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.48; % allocated cpu time (sec)
-x= 40; % Mcycles per task
+x= 35; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
@@ -27,8 +27,8 @@ v=10000;
 m=5;
 k=m;
 m
-upper_N = 30;
-upper_C = 30;
+upper_N = 25;
+upper_C = 25;
 
 
 task_iter = 20;
