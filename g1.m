@@ -22,11 +22,11 @@ x= 35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-v=1000;
+v=1;
 m=6;
 k=m;
 m
-upper_N = 20;
+upper_N = 10;
 upper_C = 25;
 
 
