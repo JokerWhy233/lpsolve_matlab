@@ -26,7 +26,7 @@ v=1000;
 m=6;
 k=m;
 m
-upper_N = 10;
+upper_N = 25;
 upper_C = 25;
 
 
