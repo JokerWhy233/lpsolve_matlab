@@ -256,7 +256,9 @@ for iter = 1:total_iter
 
             for j=1:k
                 if final_dist2(i,j)>0
-                    time_passed_tot=time_passed_tot+(1/B(j,i)+x/f(i));
+                    for jj=1:final_dist2(i,j)
+                        time_passed_tot=time_passed_tot+(1/B(j,i)+x/f(i));
+                    end
                 end
             end
             

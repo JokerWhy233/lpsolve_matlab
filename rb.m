@@ -55,7 +55,7 @@ for j = 1:length(N_mat)
         time_passed = 0;
         for n=1:N(i)
             time_passed = time_passed +  1/B(i,i) + x/f(i); 
-            time_tot=time_tot+time_passed;
+            time_tot=time_tot+  1/B(i,i) + x/f(i);
             if  time_passed <= Deadline && n <= C(i)
                 N_leftover(i)=N_leftover(i)+1;
                 static_enegery_used=static_enegery_used+(A*(f(i)/1000)^p+E)*x/f(i);  
@@ -69,7 +69,7 @@ for j = 1:length(N_mat)
 
     for n=1:sum(N_leftover)
             time_passed = time_passed +  1/B(1,end) + x/f(end);   
-            time_tot=time_tot+time_passed;
+            time_tot=time_tot+  1/B(1,end) + x/f(end);   
             
             if  time_passed >= Deadline
                 miss_cnt = miss_cnt + 1;
