@@ -30,7 +30,7 @@ upper_N = 25;
 upper_C = 25;
 
 
-task_iter = 10;
+task_iter = 20;
 
 arr_opt_no_miss_cnt = zeros(1, length(task_iter));
 arr_opt_miss_cnt =  zeros(1, length(task_iter));
