@@ -45,7 +45,7 @@ arr_task_iter_cnt = 1;
 no_miss_cnt=0;
 miss_cnt=0;
 static_enegery_used = 0;
-
+time_tot = 0;
 for j = 1:length(N_mat)
 
     N = N_mat(j,:);
@@ -54,7 +54,8 @@ for j = 1:length(N_mat)
     for i=1:m
         time_passed = 0;
         for n=1:N(i)
-            time_passed = time_passed +  1/B(i,i) + x/f(i);      
+            time_passed = time_passed +  1/B(i,i) + x/f(i); 
+            time_tot=time_tot+time_passed;
             if  time_passed <= Deadline && n <= C(i)
                 N_leftover(i)=N_leftover(i)+1;
                 static_enegery_used=static_enegery_used+(A*(f(i)/1000)^p+E)*x/f(i);  
@@ -68,6 +69,7 @@ for j = 1:length(N_mat)
 
     for n=1:sum(N_leftover)
             time_passed = time_passed +  1/B(1,end) + x/f(end);   
+            time_tot=time_tot+time_passed;
             
             if  time_passed >= Deadline
                 miss_cnt = miss_cnt + 1;
@@ -83,11 +85,11 @@ for j = 1:length(N_mat)
         
 end
 miss_cnt
-%no_miss_cnt
+no_miss_cnt
 
 static_enegery_used
 
-
+time_tot
 
 
 %%
@@ -137,7 +139,7 @@ arr_task_iter_cnt = 1;
 no_miss_cnt=0;
 miss_cnt=0;
 static_enegery_used = 0;
-
+time_tot=0;
 for j = 1:length(N_mat)
 
     N = N_mat(j,:);
@@ -196,31 +198,13 @@ for j = 1:length(N_mat)
     end
     
     
-    
-%     time_passed = 0;
-% 
-%     for n=1:m
-%             
-%             time_passed = time_passed +   1/B(1,end) + x/f(end);   
-%             
-%             if  time_passed >= Deadline
-%                 miss_cnt = miss_cnt + 1;
-%             else
-%                 no_miss_cnt=no_miss_cnt+1;
-%             end   
-%     end
-%     
-%     
-%       
-%      static_enegery_used=static_enegery_used+  (A*(f(end)/1000)^p+E)*sum(N_leftover)*x/f(end);  
-%          
-%         
+    time_tot = time_tot +sum(time_passed_ar);
 end
 miss_cnt
 no_miss_cnt
 
 static_enegery_used
-
+time_tot 
 
 %%
 %m by k
@@ -269,7 +253,7 @@ arr_task_iter_cnt = 1;
 no_miss_cnt=0;
 miss_cnt=0;
 static_enegery_used = 0;
-
+time_tot=0;
 for j = 1:length(N_mat)
 
     N = N_mat(j,:);
@@ -325,32 +309,13 @@ for j = 1:length(N_mat)
         
     end
     
-    
-    
-%     time_passed = 0;
-% 
-%     for n=1:m
-%             
-%             time_passed = time_passed +   1/B(1,end) + x/f(end);   
-%             
-%             if  time_passed >= Deadline
-%                 miss_cnt = miss_cnt + 1;
-%             else
-%                 no_miss_cnt=no_miss_cnt+1;
-%             end   
-%     end
-%     
-%     
-%       
-%      static_enegery_used=static_enegery_used+  (A*(f(end)/1000)^p+E)*sum(N_leftover)*x/f(end);  
-%          
-%         
+ time_tot = time_tot +sum(time_passed_ar);
 end
 miss_cnt
 %no_miss_cnt
 
 static_enegery_used
-
+time_tot
 
 %%
 %m by k
@@ -399,7 +364,7 @@ arr_task_iter_cnt = 1;
 no_miss_cnt=0;
 miss_cnt=0;
 static_enegery_used = 0;
-
+time_tot=0;
 for j = 1:length(N_mat)
 
     N = N_mat(j,:);
@@ -464,27 +429,11 @@ for j = 1:length(N_mat)
     
     
     
-%     time_passed = 0;
-% 
-%     for n=1:m
-%             
-%             time_passed = time_passed +   1/B(1,end) + x/f(end);   
-%             
-%             if  time_passed >= Deadline
-%                 miss_cnt = miss_cnt + 1;
-%             else
-%                 no_miss_cnt=no_miss_cnt+1;
-%             end   
-%     end
-%     
-%     
-%       
-%      static_enegery_used=static_enegery_used+  (A*(f(end)/1000)^p+E)*sum(N_leftover)*x/f(end);  
-%          
+    time_tot = time_tot +sum(time_passed_ar);   
 %         
 end
 miss_cnt
 %no_miss_cnt
 
 static_enegery_used
-
+time_tot
