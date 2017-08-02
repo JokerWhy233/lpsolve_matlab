@@ -52,7 +52,7 @@ not_fea = 1;
 
 % while not_fea 
   first = 0;
-  B = randi([8 64],m,m);%link rate (task per second)
+  B = randi([16 64],m,m);%link rate (task per second)
   for i=1:m
       B(i,end) = 4;
       B(end,i) = 4;
