@@ -113,16 +113,16 @@ for iter = 1:total_iter
 
 
     obj = [];
-    for i=1:m
-        for j=1:m
-            obj=[obj 1/B(i,j)+x/f(j)-Deadline/k]; 
-        end
-    end
 %     for i=1:m
 %         for j=1:m
-%             obj=[obj x/f(j)*(A*(f(j)/1000)^p+E)]; 
+%             obj=[obj 1/B(i,j)+x/f(j)-Deadline/k]; 
 %         end
 %     end
+    for i=1:m
+        for j=1:m
+            obj=[obj x/f(j)*(A*(f(j)/1000)^p+E)]; 
+        end
+    end
     for i=1:m
        obj=[obj v]; 
     end
