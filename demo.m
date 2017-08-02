@@ -7,7 +7,6 @@ delete('test.txt')
 diary('test.txt')
 diary on
 format long
-
 rng('default');
 %rng(1);
 %rng('shuffle');
@@ -24,7 +23,7 @@ E=70;
 A=2.37;
 p=3;
 v=10000;
-m=6;
+m=8;
 k=m;
 m
 upper_N = 25;
