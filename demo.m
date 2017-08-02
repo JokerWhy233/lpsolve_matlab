@@ -54,8 +54,8 @@ not_fea = 1;
   first = 0;
   B = randi([8 64],m,m);%link rate (task per second)
   for i=1:m
-      B(i,end) = 2;
-      B(end,i) = 2;
+      B(i,end) = 4;
+      B(end,i) = 4;
   end
   for i=1:m
       for j=i:m

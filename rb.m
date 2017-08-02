@@ -65,7 +65,7 @@ for j = 1:length(N_mat)
     time_passed = 0;
 
     for n=1:sum(N_leftover)
-            time_passed = time_passed +  1/B(1,end) + x/f(end);   
+            time_passed = time_passed +  1/4 + x/f(end);   
             
             if  time_passed >= Deadline
                 miss_cnt = miss_cnt + 1;
