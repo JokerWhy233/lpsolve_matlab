@@ -66,8 +66,8 @@ not_fea = 1;
   f =  randi([27 36],1,m)*100;%(MHz)
   %f = [2700 3000 3200 3500 0];
   f(end)=30*150;
-  N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
-  N(end)=0;
+%   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
+%   N(end)=0;
   
   C =  randi([new_t new_t+upper_C],1,m); % server link capacity (# of tasks)
   C(end)=inf;
