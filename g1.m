@@ -86,12 +86,12 @@ new_t
 
 
 
-cnt=0;
+cnt_N=0;
 
 for uu=1:length(upper_N_ar)
     upper_N = upper_N_ar(uu);
     uu_cnt=0;
-    cnt=cnt+1;
+    cnt_N=cnt_N+1;
 for vv=1:length(v_ar)
     v=v_ar(vv);
 
@@ -117,7 +117,7 @@ for iter = 1:total_iter
        N(end)=0;
        N_mat(iter,:)=N;
        
-           N_tot(cnt,iter,:)=N;
+           N_tot(cnt_N,iter,:)=N;
        
      else
          N= N_mat(iter,:);
