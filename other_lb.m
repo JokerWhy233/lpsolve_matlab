@@ -6,7 +6,7 @@
 clear
 clc
 format long
-load('var.mat');
+load('g1.mat');
 rng('default');
 %rng(1);
 %rng('shuffle');
@@ -16,34 +16,20 @@ rng('default');
 % v=10;
 
 Deadline = 0.5;% deadline (sec)
-tau = 0.48; % allocated cpu time (sec)
-x=35; % Mcycles per task
-%v=10; 
+x=40; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-v=1;
 m=6;
-k=m;
-m;
-upper_N = 20;
-upper_C = 20;
-
-
-task_iter = 20;
-
-arr_opt_no_miss_cnt = zeros(1, length(task_iter));
-arr_opt_miss_cnt =  zeros(1, length(task_iter));
-arr_static_no_miss_cnt =  zeros(1, length(task_iter));
-arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
-arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
-arr_opt_enegery_used = zeros(1, length(task_iter));
-arr_static_enegery_used = zeros(1, length(task_iter));
-arr_task_iter_cnt = 1;
-
-
 
 len_N_tot = size(N_tot,1);
+lb_arr_miss_cnt = zeros(length(len_N_tot),4);
+arr_no_miss_cnt= zeros(length(len_N_tot),4);
+arr_static_enegery_used= zeros(length(len_N_tot),4);
+arr_time_tot= zeros(length(len_N_tot),4);
+
+met=1;
+
 
 for nn = 1:len_N_tot 
     
@@ -93,58 +79,25 @@ for j = 1:length(N_mat)
          
         
 end
-miss_cnt
-no_miss_cnt;
+lb_arr_miss_cnt(nn,met)=miss_cnt;
+arr_no_miss_cnt(nn,met)=no_miss_cnt;
+arr_static_enegery_used(nn,met)=static_enegery_used;
+arr_time_tot(nn,met)=time_tot ;
 
-static_enegery_used
-
-time_tot
 
 end
 
 
-%%
+
 %m by k
 
 % round robin
-
-clear
-clc
-format long
-load('var.mat');
-rng('default');
-%rng(1);
-%rng('shuffle');
-% D = 0.4;% deadline (sec)
-% tau = 0.35; % allocated cpu time (sec)
-% x= 50; % Mcycles per task
-% v=10;
-
-Deadline = 0.5;% deadline (sec)
-tau = 0.5; % allocated cpu time (sec)
-x= 35; % Mcycles per task
-%v=10; 
-E=70;
-A=2.37;
-p=3;
-v=100;
-m=6;
-k=m;
-m;
-upper_N = 20;
-upper_C = 20;
+met=met+1;
 
 
-task_iter = 20;
-
-arr_opt_no_miss_cnt = zeros(1, length(task_iter));
-arr_opt_miss_cnt =  zeros(1, length(task_iter));
-arr_static_no_miss_cnt =  zeros(1, length(task_iter));
-arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
-arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
-arr_opt_enegery_used = zeros(1, length(task_iter));
-arr_static_enegery_used = zeros(1, length(task_iter));
-arr_task_iter_cnt = 1;
+for nn = 1:len_N_tot 
+    
+    N_mat = squeeze(N_tot(nn,:,:));
 
 
 no_miss_cnt=0;
@@ -211,55 +164,22 @@ for j = 1:length(N_mat)
     
     time_tot = time_tot +sum(time_passed_ar);
 end
-miss_cnt
-no_miss_cnt;
+lb_arr_miss_cnt(nn,met)=miss_cnt;
+arr_no_miss_cnt(nn,met)=no_miss_cnt;
+arr_static_enegery_used(nn,met)=static_enegery_used;
+arr_time_tot(nn,met)=time_tot ;
 
-static_enegery_used
-time_tot 
+end
 
-%%
 %m by k
 
 % Active Monitoring Load Balancer --> most available server - cloud last
-
-clear
-clc
-format long
-load('var.mat');
-rng('default');
-%rng(1);
-%rng('shuffle');
-% D = 0.4;% deadline (sec)
-% tau = 0.35; % allocated cpu time (sec)
-% x= 50; % Mcycles per task
-% v=10;
-
-Deadline = 0.5;% deadline (sec)
-tau = 0.5; % allocated cpu time (sec)
-x= 35; % Mcycles per task
-%v=10; 
-E=70;
-A=2.37;
-p=3;
-v=100;
-m=6;
-k=m;
-m;
-upper_N = 20;
-upper_C = 20;
+met=met+1;
 
 
-task_iter = 20;
-
-arr_opt_no_miss_cnt = zeros(1, length(task_iter));
-arr_opt_miss_cnt =  zeros(1, length(task_iter));
-arr_static_no_miss_cnt =  zeros(1, length(task_iter));
-arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
-arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
-arr_opt_enegery_used = zeros(1, length(task_iter));
-arr_static_enegery_used = zeros(1, length(task_iter));
-arr_task_iter_cnt = 1;
-
+for nn = 1:len_N_tot 
+    
+    N_mat = squeeze(N_tot(nn,:,:));
 
 no_miss_cnt=0;
 miss_cnt=0;
@@ -322,54 +242,24 @@ for j = 1:length(N_mat)
     
  time_tot = time_tot +sum(time_passed_ar);
 end
-miss_cnt
-%no_miss_cnt
+lb_arr_miss_cnt(nn,met)=miss_cnt;
+arr_no_miss_cnt(nn,met)=no_miss_cnt;
+arr_static_enegery_used(nn,met)=static_enegery_used;
+arr_time_tot(nn,met)=time_tot ;
 
-static_enegery_used
-time_tot
+end
 
-%%
+
 %m by k
 
 % throttled Load Balancer --> most recommded 
 
-clear
-clc
-format long
-load('var.mat');
-rng('default');
-%rng(1);
-%rng('shuffle');
-% D = 0.4;% deadline (sec)
-% tau = 0.35; % allocated cpu time (sec)
-% x= 50; % Mcycles per task
-% v=10;
-
-Deadline = 0.5;% deadline (sec)
-tau = 0.5; % allocated cpu time (sec)
-x= 40; % Mcycles per task
-%v=10; 
-E=70;
-A=2.37;
-p=3;
-v=100;
-m=6;
-k=m;
-m;
-upper_N = 20;
-upper_C = 20;
+met=met+1;
 
 
-task_iter = 20;
-
-arr_opt_no_miss_cnt = zeros(1, length(task_iter));
-arr_opt_miss_cnt =  zeros(1, length(task_iter));
-arr_static_no_miss_cnt =  zeros(1, length(task_iter));
-arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
-arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
-arr_opt_enegery_used = zeros(1, length(task_iter));
-arr_static_enegery_used = zeros(1, length(task_iter));
-arr_task_iter_cnt = 1;
+for nn = 1:len_N_tot 
+    
+    N_mat = squeeze(N_tot(nn,:,:));
 
 
 no_miss_cnt=0;
@@ -443,8 +333,19 @@ for j = 1:length(N_mat)
     time_tot = time_tot +sum(time_passed_ar);   
 %         
 end
-miss_cnt
-%no_miss_cnt
+lb_arr_miss_cnt(nn,met)=miss_cnt;
+arr_no_miss_cnt(nn,met)=no_miss_cnt;
+arr_static_enegery_used(nn,met)=static_enegery_used;
+arr_time_tot(nn,met)=time_tot ;
 
-static_enegery_used
-time_tot
+
+end
+
+lb_arr_miss_cnt
+
+total_ts=arr_no_miss_cnt+lb_arr_miss_cnt
+arr_static_enegery_used
+arr_time_tot
+
+
+plot(lb_arr_miss_cnt)

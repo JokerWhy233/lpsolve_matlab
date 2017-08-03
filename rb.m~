@@ -17,12 +17,12 @@ rng('default');
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.48; % allocated cpu time (sec)
-x= 40; % Mcycles per task
+x=35; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
 p=3;
-v=100;
+v=1;
 m=6;
 k=m;
 m;
@@ -40,6 +40,11 @@ arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
 arr_opt_enegery_used = zeros(1, length(task_iter));
 arr_static_enegery_used = zeros(1, length(task_iter));
 arr_task_iter_cnt = 1;
+
+
+
+
+
 
 
 no_miss_cnt=0;
@@ -85,7 +90,7 @@ for j = 1:length(N_mat)
         
 end
 miss_cnt
-no_miss_cnt
+no_miss_cnt;
 
 static_enegery_used
 
@@ -111,7 +116,7 @@ rng('default');
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.5; % allocated cpu time (sec)
-x= 40; % Mcycles per task
+x= 35; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
@@ -201,7 +206,7 @@ for j = 1:length(N_mat)
     time_tot = time_tot +sum(time_passed_ar);
 end
 miss_cnt
-no_miss_cnt
+no_miss_cnt;
 
 static_enegery_used
 time_tot 
@@ -225,7 +230,7 @@ rng('default');
 
 Deadline = 0.5;% deadline (sec)
 tau = 0.5; % allocated cpu time (sec)
-x= 40; % Mcycles per task
+x= 35; % Mcycles per task
 %v=10; 
 E=70;
 A=2.37;
