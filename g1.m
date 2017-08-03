@@ -23,7 +23,7 @@ x= 35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-upper_N_ar = [10 12 14 16 18 20 22 24];
+upper_N_ar = [12 14 16 18 20 22 24 26];
 v_ar=[0 1 10 100 1000 10000000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
@@ -116,7 +116,7 @@ for iter = 1:total_iter
      
      
      if uu_cnt == 0
-       sum_of_ts = 125+(uu-1)*5;
+       sum_of_ts = 130+(uu-1)*5;
       while not_fea 
        N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
