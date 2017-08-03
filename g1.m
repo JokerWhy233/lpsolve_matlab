@@ -63,15 +63,15 @@ not_fea = 1;
         B(i,j)=B(j,i);
       end
   end
-  B(eye(size(B))~=0)=10e5;
-  f =  randi([27 36],1,m)*100;%(MHz)
-  %f = [2700 3000 3200 3500 0];
-  f(end)=30*150;
-%   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
-%   N(end)=0;
-  
-  C =  randi([20 45],1,m); % server link capacity (# of tasks)
-  C(end)=inf;
+%   B(eye(size(B))~=0)=10e5;
+%   f =  randi([27 36],1,m)*100;%(MHz)
+%   %f = [2700 3000 3200 3500 0];
+%   f(end)=30*150;
+% %   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
+% %   N(end)=0;
+%   
+%   C =  randi([20 45],1,m); % server link capacity (# of tasks)
+%   C(end)=inf;
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
 %   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
