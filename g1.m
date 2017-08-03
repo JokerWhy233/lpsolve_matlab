@@ -53,16 +53,16 @@ not_fea = 1;
 
 % while not_fea 
   first = 0;
-  B = randi([16 64],m,m);%link rate (task per second)
-  for i=1:m
-      B(i,end) = 4;
-      B(end,i) = 4;
-  end
-  for i=1:m
-      for j=i:m
-        B(i,j)=B(j,i);
-      end
-  end
+%   B = randi([16 64],m,m);%link rate (task per second)
+%   for i=1:m
+%       B(i,end) = 4;
+%       B(end,i) = 4;
+%   end
+%   for i=1:m
+%       for j=i:m
+%         B(i,j)=B(j,i);
+%       end
+%   end
 %   B(eye(size(B))~=0)=10e5;
 %   f =  randi([27 36],1,m)*100;%(MHz)
 %   %f = [2700 3000 3200 3500 0];
