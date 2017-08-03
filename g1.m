@@ -25,6 +25,8 @@ A=2.37;
 p=3;
 upper_N_ar = [10 12 14 16 18 20 22 24];
 v_ar=[0 1 10 100 1000 10000000];
+upper_N_ar = [10 12];
+v_ar=[0 1 10];
 m=6;
 k=m;
 m
@@ -111,13 +113,22 @@ for vv=1:length(v_ar)
 for iter = 1:total_iter
      iter;
      not_fea = 1;
+     
+     
      if uu_cnt == 0
-%      while not_fea 
+       sum_of_ts = 125+(uu-1)*5;
+      while not_fea 
        N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
-       N_mat(iter,:)=N;
+       if sum(N)==sum_of_ts 
+           not_fea = 0;
+                  N_mat(iter,:)=N;
        
-           N_tot(cnt_N,iter,:)=N;
+                    N_tot(cnt_N,iter,:)=N;
+       end
+       
+       
+
        
      else
          N= N_mat(iter,:);
