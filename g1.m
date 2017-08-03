@@ -33,12 +33,12 @@ upper_C = 25;
 
 new_t = 20;
 
-arr_opt_no_miss_cnt = zeros(length(v_ar), length(upper_N_ar));
-arr_opt_miss_cnt =  zeros(length(v_ar), length(upper_N_ar));
-arr_static_no_miss_cnt =  zeros(length(v_ar), length(upper_N_ar));
-arr_static_miss_cnt_t_limit =  zeros(length(v_ar), length(upper_N_ar));
-arr_static_miss_cnt_c_limit =  zeros(length(v_ar), length(upper_N_ar));
-arr_time_passed_tot =  zeros(length(v_ar), length(upper_N_ar));
+arr_opt_no_miss_cnt = zeros(length(upper_N_ar),length(v_ar));
+arr_opt_miss_cnt =  zeros(length(upper_N_ar),length(v_ar));
+arr_static_no_miss_cnt =  zeros(length(upper_N_ar),length(v_ar));
+arr_static_miss_cnt_t_limit =  zeros(length(upper_N_ar),length(v_ar));
+arr_static_miss_cnt_c_limit =  zeros(length(upper_N_ar),length(v_ar));
+arr_time_passed_tot =  zeros(length(upper_N_ar),length(v_ar));
 %arr_opt_enegery_used = zeros(1, length(task_iter));
 %arr_static_enegery_used = zeros(1, length(task_iter));
 arr_task_iter_cnt = 1;
@@ -92,8 +92,6 @@ for vv=1:length(v_ar)
     v=v_ar(vv);
 
     tic
-    
-    
     
     opt_no_miss_cnt = 0;
     opt_miss_cnt = 0;
