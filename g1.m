@@ -3,8 +3,8 @@
 clear
 clc
 % close all
-delete('test.txt')
-diary('test.txt')
+delete('g1.txt')
+diary('g1.txt')
 diary on
 format long
 rng('default');
@@ -22,27 +22,28 @@ x= 35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-v=1000;
+v_ar=[0 1 10 100 1000 inf];
 m=6;
 k=m;
 m
-upper_N = 15;
+upper_N_ar = [10 15 20 25];
 upper_C = 25;
 
 
-task_iter = 20;
+new_t = 20;
 
-arr_opt_no_miss_cnt = zeros(1, length(task_iter));
-arr_opt_miss_cnt =  zeros(1, length(task_iter));
-arr_static_no_miss_cnt =  zeros(1, length(task_iter));
-arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
-arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
+arr_opt_no_miss_cnt = zeros(length(v_ar), length(upper_N_ar));
+arr_opt_miss_cnt =  zeros(length(v_ar), length(upper_N_ar));
+arr_static_no_miss_cnt =  zeros(length(v_ar), length(upper_N_ar));
+arr_static_miss_cnt_t_limit =  zeros(length(v_ar), length(upper_N_ar));
+arr_static_miss_cnt_c_limit =  zeros(length(v_ar), length(upper_N_ar));
+arr_time_passed_tot =  zeros(length(v_ar), length(upper_N_ar));
 arr_opt_enegery_used = zeros(1, length(task_iter));
 arr_static_enegery_used = zeros(1, length(task_iter));
 arr_task_iter_cnt = 1;
 
-time_passed_tot = 0;
-for new_t = task_iter 
+
+
     
    
 suc_solved = 0;
@@ -81,16 +82,25 @@ not_fea = 1;
 % end
 new_t 
 
-opt_no_miss_cnt = 0;
-opt_miss_cnt = 0;
 
-static_no_miss_cnt = 0;
-static_miss_cnt_t_limit = 0;
-static_miss_cnt_c_limit = 0;
-
-opt_enegery_used = 0;
-static_enegery_used = 0; 
 tic
+
+for vv=1:length(v_ar)
+    v=v_ar(vv);
+for uu=1:length(upper_N_ar)
+    upper_N = upper_N_ar(uu);
+    
+    
+    opt_no_miss_cnt = 0;
+    opt_miss_cnt = 0;
+
+    static_no_miss_cnt = 0;
+    static_miss_cnt_t_limit = 0;
+    static_miss_cnt_c_limit = 0;
+
+    opt_enegery_used = 0;
+    static_enegery_used = 0; 
+    time_passed_tot = 0;
 for iter = 1:total_iter
      iter;
      not_fea = 1;
@@ -98,18 +108,6 @@ for iter = 1:total_iter
        N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
        N_mat(iter,:)=N;
-       
-       
-%        num_tasks_allowed = sum(floor(tau*f/x));
-%        num_tasks = sum(N);
-%        if num_tasks < num_tasks_allowed & num_tasks < sum(C)
-%          not_fea = 0;
-%        else
-%          not_fea = 1;
-%        end
-%      end
-     
-
 
     obj = [];
     for i=1:m
@@ -205,7 +203,7 @@ for iter = 1:total_iter
         %final_y1_cons=cons(end-2m+1:end-m)'
         final_y2_cons=cons(end-m+1:end)';
         dist=reshape(res,m,m+1)';
-        final_dist=sparse(dist(1:m,:))%(x,y)=z -> x give y z tasks
+        final_dist=sparse(dist(1:m,:));%(x,y)=z -> x give y z tasks
         final_dist2=sparse(dist(1:m,:)');
         lateness =zeros(m,m);
         opt_lateness = zeros(1,m);
@@ -359,35 +357,40 @@ for iter = 1:total_iter
 end
 
 
+    arr_opt_miss_cnt(vv,uu)=opt_miss_cnt;
+    arr_opt_no_miss_cnt(vv,uu)=opt_no_miss_cnt;
+    arr_time_passed_tot(vv,uu)=time_passed_tot;
+    arr_static_miss_cnt_c_limit(vv,uu)=static_miss_cnt_c_limit;
+    arr_static_miss_cnt_t_limit(vv,uu)=static_miss_cnt_t_limit;
+    arr_static_no_miss_cnt(vv,uu)=static_no_miss_cnt;
 
-toc
 
-solved_percen = suc_solved/total_iter 
-total_iter 
 
-arr_opt_miss_cnt(arr_task_iter_cnt)=opt_miss_cnt;
-arr_opt_no_miss_cnt(arr_task_iter_cnt)=opt_no_miss_cnt;
 
-arr_static_miss_cnt_c_limit(arr_task_iter_cnt)=static_miss_cnt_c_limit;
-arr_static_miss_cnt_t_limit(arr_task_iter_cnt)=static_miss_cnt_t_limit;
-arr_static_no_miss_cnt(arr_task_iter_cnt)=static_no_miss_cnt;
 
-arr_opt_enegery_used(arr_task_iter_cnt)=opt_enegery_used;
-arr_static_enegery_used(arr_task_iter_cnt)=static_enegery_used; 
-arr_task_iter_cnt=arr_task_iter_cnt+1;
+
 end
 
-final_dist
-v
-opt_miss_vs_no_miss=[arr_opt_miss_cnt ;arr_opt_no_miss_cnt]
 
-
-static_miss_vs_no_miss=[arr_static_miss_cnt_c_limit+arr_static_miss_cnt_t_limit ;arr_static_no_miss_cnt]
+end
+toc
 
 
 
-opt_en_vs_static_en=[arr_opt_enegery_used ;arr_static_enegery_used]
-time_passed_tot
+
+
+
+% final_dist
+% v
+% upper_N
+% opt_miss_vs_no_miss=[arr_opt_miss_cnt ;arr_opt_no_miss_cnt];
+% opt_en_vs_static_en=[arr_opt_enegery_used ;arr_static_enegery_used]
+
+arr_opt_miss_cnt
+total_ts=arr_opt_no_miss_cnt+arr_opt_miss_cnt
+arr_time_passed_tot
+arr_static_miss=arr_static_miss_cnt_c_limit+ arr_static_miss_cnt_t_limit
+total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt_t_limit
 
 
 
