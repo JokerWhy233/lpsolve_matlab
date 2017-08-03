@@ -8,6 +8,7 @@ diary('g1.txt')
 diary on
 format long
 rng('default');
+load('g1.mat');
 %rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
@@ -22,26 +23,28 @@ x= 35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-v_ar=[0 1 10 100 1000 inf];
+upper_N_ar = [10 12];% 14 16 18 20 22 24];
+v_ar=[0 1 10 100 1000 10000000];
 m=6;
 k=m;
 m
-upper_N_ar = [10 12 14 16 18 20 22 24 25];
+
 upper_C = 25;
 
 
 new_t = 20;
 
-arr_opt_no_miss_cnt = zeros(1, length(task_iter));
-arr_opt_miss_cnt =  zeros(1, length(task_iter));
-arr_static_no_miss_cnt =  zeros(1, length(task_iter));
-arr_static_miss_cnt_t_limit =  zeros(1, length(task_iter));
-arr_static_miss_cnt_c_limit =  zeros(1, length(task_iter));
-arr_opt_enegery_used = zeros(1, length(task_iter));
-arr_static_enegery_used = zeros(1, length(task_iter));
+arr_opt_no_miss_cnt = zeros(length(upper_N_ar),length(v_ar));
+arr_opt_miss_cnt =  zeros(length(upper_N_ar),length(v_ar));
+arr_static_no_miss_cnt =  zeros(length(upper_N_ar),length(v_ar));
+arr_static_miss_cnt_t_limit =  zeros(length(upper_N_ar),length(v_ar));
+arr_static_miss_cnt_c_limit =  zeros(length(upper_N_ar),length(v_ar));
+arr_time_passed_tot =  zeros(length(upper_N_ar),length(v_ar));
+%arr_opt_enegery_used = zeros(1, length(task_iter));
+%arr_static_enegery_used = zeros(1, length(task_iter));
 arr_task_iter_cnt = 1;
 
-time_passed_tot = 0;
+
 
     
    
@@ -51,25 +54,25 @@ not_fea = 1;
 
 % while not_fea 
   first = 0;
-  B = randi([16 64],m,m);%link rate (task per second)
-  for i=1:m
-      B(i,end) = 4;
-      B(end,i) = 4;
-  end
-  for i=1:m
-      for j=i:m
-        B(i,j)=B(j,i);
-      end
-  end
-  B(eye(size(B))~=0)=10e5;
-  f =  randi([27 36],1,m)*100;%(MHz)
-  %f = [2700 3000 3200 3500 0];
-  f(end)=30*150;
-  N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
-  N(end)=0;
-  
-  C =  randi([20 45],1,m); % server link capacity (# of tasks)
-  C(end)=inf;
+%   B = randi([16 64],m,m);%link rate (task per second)
+%   for i=1:m
+%       B(i,end) = 4;
+%       B(end,i) = 4;
+%   end
+%   for i=1:m
+%       for j=i:m
+%         B(i,j)=B(j,i);
+%       end
+%   end
+%   B(eye(size(B))~=0)=10e5;
+%   f =  randi([27 36],1,m)*100;%(MHz)
+%   %f = [2700 3000 3200 3500 0];
+%   f(end)=30*150;
+% %   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
+% %   N(end)=0;
+%   
+%   C =  randi([20 45],1,m); % server link capacity (# of tasks)
+%   C(end)=inf;
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
 %   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
@@ -82,13 +85,16 @@ not_fea = 1;
 new_t 
 
 
-tic
+cnt=1;
 
-for vv=1:length(v_ar)
-    v=v_ar(vv);
+
 for uu=1:length(upper_N_ar)
     upper_N = upper_N_ar(uu);
-    
+    uu_cnt=0;
+for vv=1:length(v_ar)
+    v=v_ar(vv);
+
+    tic
     
     opt_no_miss_cnt = 0;
     opt_miss_cnt = 0;
@@ -99,13 +105,21 @@ for uu=1:length(upper_N_ar)
 
     opt_enegery_used = 0;
     static_enegery_used = 0; 
+    time_passed_tot = 0;    
 for iter = 1:total_iter
      iter;
      not_fea = 1;
+     if uu_cnt == 0
 %      while not_fea 
        N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
        N_mat(iter,:)=N;
+       if cnt<=length(upper_N_ar)
+           N_tot(cnt,iter,:)=N;
+       end
+     else
+         N= N_mat(iter,:);
+     end
 
     obj = [];
     for i=1:m
@@ -355,35 +369,42 @@ for iter = 1:total_iter
 end
 
 
-    arr_opt_miss_cnt(vv,uu)=opt_miss_cnt;
-    arr_opt_no_miss_cnt(vv,uu)=opt_no_miss_cnt;
-    time_passed_tot
-    arr_static_miss_cnt_c_limit(vv,uu)=static_miss_cnt_c_limit;
-    arr_static_miss_cnt_t_limit(vv,uu)=static_miss_cnt_t_limit;
-    arr_static_no_miss_cnt(vv,uu)=static_no_miss_cnt;
+    arr_opt_miss_cnt(uu,vv)=opt_miss_cnt;
+    arr_opt_no_miss_cnt(uu,vv)=opt_no_miss_cnt;
+    arr_time_passed_tot(uu,vv)=time_passed_tot;
+    arr_static_miss_cnt_c_limit(uu,vv)=static_miss_cnt_c_limit;
+    arr_static_miss_cnt_t_limit(uu,vv)=static_miss_cnt_t_limit;
+    arr_static_no_miss_cnt(uu,vv)=static_no_miss_cnt;
 
 
 
 
 
-
-end
-
-
-end
 toc
+uu_cnt=1;
+cnt=cnt+1;
+end
+
+
+end
 
 
 
 
 
 
-final_dist
-v
-upper_N
-opt_miss_vs_no_miss=[arr_opt_miss_cnt ;arr_opt_no_miss_cnt]
-opt_en_vs_static_en=[arr_opt_enegery_used ;arr_static_enegery_used]
-time_passed_tot
+
+% final_dist
+% v
+% upper_N
+% opt_miss_vs_no_miss=[arr_opt_miss_cnt ;arr_opt_no_miss_cnt];
+% opt_en_vs_static_en=[arr_opt_enegery_used ;arr_static_enegery_used]
+
+arr_opt_miss_cnt
+total_ts=arr_opt_no_miss_cnt+arr_opt_miss_cnt
+arr_time_passed_tot
+arr_static_miss=arr_static_miss_cnt_c_limit+ arr_static_miss_cnt_t_limit
+total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt_t_limit
 
 
 

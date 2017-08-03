@@ -85,12 +85,13 @@ not_fea = 1;
 new_t 
 
 
-cnt=1;
 
+cnt=0;
 
 for uu=1:length(upper_N_ar)
     upper_N = upper_N_ar(uu);
     uu_cnt=0;
+    cnt=cnt+1;
 for vv=1:length(v_ar)
     v=v_ar(vv);
 
@@ -105,7 +106,8 @@ for vv=1:length(v_ar)
 
     opt_enegery_used = 0;
     static_enegery_used = 0; 
-    time_passed_tot = 0;    
+    time_passed_tot = 0;   
+    
 for iter = 1:total_iter
      iter;
      not_fea = 1;
@@ -114,10 +116,9 @@ for iter = 1:total_iter
        N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
        N_mat(iter,:)=N;
-       if cnt<=length(upper_N_ar)
+       
            N_tot(cnt,iter,:)=N;
-           cnt=cnt+1;
-       end
+       
      else
          N= N_mat(iter,:);
      end
@@ -383,6 +384,7 @@ end
 
 toc
 uu_cnt=1;
+
 end
 
 
