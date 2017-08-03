@@ -67,8 +67,8 @@ not_fea = 1;
   f =  randi([27 36],1,m)*100;%(MHz)
   %f = [2700 3000 3200 3500 0];
   f(end)=30*150;
-  N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
-  N(end)=0;
+%   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
+%   N(end)=0;
   
   C =  randi([20 45],1,m); % server link capacity (# of tasks)
   C(end)=inf;
@@ -84,11 +84,12 @@ not_fea = 1;
 new_t 
 
 
-tic
+
 
 for vv=1:length(v_ar)
     v=v_ar(vv);
 for uu=1:length(upper_N_ar)
+    tic
     upper_N = upper_N_ar(uu);
     
     
@@ -369,12 +370,12 @@ end
 
 
 
-
-end
-
-
-end
 toc
+end
+
+
+end
+
 
 
 
