@@ -27,7 +27,7 @@ v_ar=[10 100];
 m=6;
 k=m;
 m
-upper_N_ar = [10 15];
+upper_N_ar = [10 15 20];
 upper_C = 25;
 
 
@@ -365,12 +365,12 @@ for iter = 1:total_iter
 end
 
 
-    arr_opt_miss_cnt(vv,uu)=opt_miss_cnt;
-    arr_opt_no_miss_cnt(vv,uu)=opt_no_miss_cnt;
-    arr_time_passed_tot(vv,uu)=time_passed_tot;
-    arr_static_miss_cnt_c_limit(vv,uu)=static_miss_cnt_c_limit;
-    arr_static_miss_cnt_t_limit(vv,uu)=static_miss_cnt_t_limit;
-    arr_static_no_miss_cnt(vv,uu)=static_no_miss_cnt;
+    arr_opt_miss_cnt(uu,vv)=opt_miss_cnt;
+    arr_opt_no_miss_cnt(uu,vv)=opt_no_miss_cnt;
+    arr_time_passed_tot(uu,vv)=time_passed_tot;
+    arr_static_miss_cnt_c_limit(uu,vv)=static_miss_cnt_c_limit;
+    arr_static_miss_cnt_t_limit(uu,vv)=static_miss_cnt_t_limit;
+    arr_static_no_miss_cnt(uu,vv)=static_no_miss_cnt;
 
 
 
