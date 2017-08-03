@@ -413,5 +413,5 @@ total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt
 % display('en')
 
 diary off
-save('var.mat','f','C','B','N_mat');
+save('var.mat','f','C','B','N_tot');
 
