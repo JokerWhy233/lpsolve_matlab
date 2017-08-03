@@ -5,8 +5,9 @@
 
 clear
 clc
+close all
 format long
-load('var.mat');
+load('g1.mat');
 rng('default');
 %rng(1);
 %rng('shuffle');
@@ -16,14 +17,14 @@ rng('default');
 % v=10;
 
 Deadline = 0.5;% deadline (sec)
-x=35; % Mcycles per task
+x=40; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
 m=6;
 
 len_N_tot = size(N_tot,1);
-arr_miss_cnt = zeros(length(len_N_tot),4);
+lb_arr_miss_cnt = zeros(length(len_N_tot),4);
 arr_no_miss_cnt= zeros(length(len_N_tot),4);
 arr_static_enegery_used= zeros(length(len_N_tot),4);
 arr_time_tot= zeros(length(len_N_tot),4);
@@ -79,7 +80,7 @@ for j = 1:length(N_mat)
          
         
 end
-arr_miss_cnt(nn,met)=miss_cnt;
+lb_arr_miss_cnt(nn,met)=miss_cnt;
 arr_no_miss_cnt(nn,met)=no_miss_cnt;
 arr_static_enegery_used(nn,met)=static_enegery_used;
 arr_time_tot(nn,met)=time_tot ;
@@ -129,10 +130,10 @@ for j = 1:length(N_mat)
 
     end
     inn=0;
-    N_leftover
-    time_passed_ar
+    N_leftover;
+    time_passed_ar;
 
-    j
+    j;
     for i=1:m
         
         while(N_leftover(i)>0)
@@ -164,7 +165,7 @@ for j = 1:length(N_mat)
     
     time_tot = time_tot +sum(time_passed_ar);
 end
-arr_miss_cnt(nn,met)=miss_cnt;
+lb_arr_miss_cnt(nn,met)=miss_cnt;
 arr_no_miss_cnt(nn,met)=no_miss_cnt;
 arr_static_enegery_used(nn,met)=static_enegery_used;
 arr_time_tot(nn,met)=time_tot ;
@@ -210,8 +211,8 @@ for j = 1:length(N_mat)
 
     end
     inn=0;
-    N_leftover
-    time_passed_ar
+    N_leftover;
+    time_passed_ar;
     for i=1:m
         
         while(N_leftover(i)>0)
@@ -242,7 +243,7 @@ for j = 1:length(N_mat)
     
  time_tot = time_tot +sum(time_passed_ar);
 end
-arr_miss_cnt(nn,met)=miss_cnt;
+lb_arr_miss_cnt(nn,met)=miss_cnt;
 arr_no_miss_cnt(nn,met)=no_miss_cnt;
 arr_static_enegery_used(nn,met)=static_enegery_used;
 arr_time_tot(nn,met)=time_tot ;
@@ -291,8 +292,8 @@ for j = 1:length(N_mat)
 
     end
     inn=0;
-    N_leftover
-    time_passed_ar
+    N_leftover;
+    time_passed_ar;
     for i=1:m
         
         while(N_leftover(i)>0)
@@ -333,7 +334,7 @@ for j = 1:length(N_mat)
     time_tot = time_tot +sum(time_passed_ar);   
 %         
 end
-arr_miss_cnt(nn,met)=miss_cnt;
+lb_arr_miss_cnt(nn,met)=miss_cnt;
 arr_no_miss_cnt(nn,met)=no_miss_cnt;
 arr_static_enegery_used(nn,met)=static_enegery_used;
 arr_time_tot(nn,met)=time_tot ;
@@ -341,9 +342,17 @@ arr_time_tot(nn,met)=time_tot ;
 
 end
 
-arr_miss_cnt
+lb_arr_miss_cnt;
 
-total_ts=arr_no_miss_cnt+arr_miss_cnt
+total_ts=arr_no_miss_cnt+lb_arr_miss_cnt;
 arr_static_enegery_used
 arr_time_tot
 
+
+
+xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093]
+xxis = [12500 13000 13500 14000 14500 15000 15500 16000 16500]
+gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt,arr_opt_miss_cnt)
+figure
+plot(gtot_arr_miss_cnt)
+figure

@@ -5,6 +5,7 @@
 
 clear
 clc
+close all
 format long
 load('g1.mat');
 rng('default');
@@ -129,10 +130,10 @@ for j = 1:length(N_mat)
 
     end
     inn=0;
-    N_leftover
-    time_passed_ar
+    N_leftover;
+    time_passed_ar;
 
-    j
+    j;
     for i=1:m
         
         while(N_leftover(i)>0)
@@ -210,8 +211,8 @@ for j = 1:length(N_mat)
 
     end
     inn=0;
-    N_leftover
-    time_passed_ar
+    N_leftover;
+    time_passed_ar;
     for i=1:m
         
         while(N_leftover(i)>0)
@@ -291,8 +292,8 @@ for j = 1:length(N_mat)
 
     end
     inn=0;
-    N_leftover
-    time_passed_ar
+    N_leftover;
+    time_passed_ar;
     for i=1:m
         
         while(N_leftover(i)>0)
@@ -341,11 +342,17 @@ arr_time_tot(nn,met)=time_tot ;
 
 end
 
-lb_arr_miss_cnt
+lb_arr_miss_cnt;
 
-total_ts=arr_no_miss_cnt+lb_arr_miss_cnt
+total_ts=arr_no_miss_cnt+lb_arr_miss_cnt;
 arr_static_enegery_used
 arr_time_tot
 
 
-plot(lb_arr_miss_cnt)
+
+xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093]
+xxis = [12500 13000 13500 14000 14500 15000 15500 16000 16500]
+gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt,arr_opt_miss_cnt)
+figure
+plot(gtot_arr_miss_cnt)
+figure
