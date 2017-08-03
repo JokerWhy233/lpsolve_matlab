@@ -128,7 +128,7 @@ for iter = 1:total_iter
        end
        
        
-
+      end
        
      else
          N= N_mat(iter,:);
