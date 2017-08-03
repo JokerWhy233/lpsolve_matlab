@@ -120,7 +120,7 @@ for iter = 1:total_iter
       while not_fea 
        N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
        N(end)=0;
-       if sum(N)==sum_of_ts 
+       if 1 %sum(N)==sum_of_ts 
            not_fea = 0;
                   N_mat(iter,:)=N;
        
