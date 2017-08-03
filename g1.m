@@ -38,8 +38,8 @@ arr_static_no_miss_cnt =  zeros(length(v_ar), length(upper_N_ar));
 arr_static_miss_cnt_t_limit =  zeros(length(v_ar), length(upper_N_ar));
 arr_static_miss_cnt_c_limit =  zeros(length(v_ar), length(upper_N_ar));
 arr_time_passed_tot =  zeros(length(v_ar), length(upper_N_ar));
-arr_opt_enegery_used = zeros(1, length(task_iter));
-arr_static_enegery_used = zeros(1, length(task_iter));
+%arr_opt_enegery_used = zeros(1, length(task_iter));
+%arr_static_enegery_used = zeros(1, length(task_iter));
 arr_task_iter_cnt = 1;
 
 
