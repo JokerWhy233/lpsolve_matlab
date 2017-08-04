@@ -77,8 +77,10 @@ not_fea = 1;
 % %   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
 % %   N(end)=0;
 %   
+  
   C =  randi([5 350],1,m); % server link capacity (# of tasks)
   C(end)=inf;
+  C = [5 10 15 20 15 20 35 inf];
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
 %   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
@@ -221,7 +223,9 @@ for iter = 1:total_iter
 
     lp = lp_maker(-obj, a, b, e,vlb, vub, xint);
     %tic
+    display('solving')
     solvestat = mxlpsolve('solve', lp);
+    display('solved')
     %toc
     
     if(solvestat==0)
