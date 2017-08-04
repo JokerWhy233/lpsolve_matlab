@@ -30,7 +30,7 @@ E=70;
 A=2.37;
 p=3;
 upper_N_ar = [12 14 16 18 20 22 24 26];
-v_ar=[0 1 10 100 1000];
+v_ar=[0 1 10 100 1000 1000000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
 m=8;
@@ -48,6 +48,7 @@ arr_static_no_miss_cnt =  zeros(length(upper_N_ar),length(v_ar));
 arr_static_miss_cnt_t_limit =  zeros(length(upper_N_ar),length(v_ar));
 arr_static_miss_cnt_c_limit =  zeros(length(upper_N_ar),length(v_ar));
 arr_time_passed_tot =  zeros(length(upper_N_ar),length(v_ar));
+arr_cputime = zeros(length(upper_N_ar),length(v_ar));
 %arr_opt_enegery_used = zeros(1, length(task_iter));
 %arr_static_enegery_used = zeros(1, length(task_iter));
 arr_task_iter_cnt = 1;
@@ -117,6 +118,9 @@ for vv=1:length(v_ar)
     opt_enegery_used = 0;
     static_enegery_used = 0; 
     time_passed_tot = 0;   
+    
+    cputime = 0;
+    
     
 for iter = 1:total_iter
      iter;
@@ -224,11 +228,12 @@ for iter = 1:total_iter
     xint=1:m*m;
 
     lp = lp_maker(-obj, a, b, e,vlb, vub, xint);
-    %tic
+    tic
     %display('solving')
     solvestat = mxlpsolve('solve', lp);
     %display('solved')
-    %toc
+    tocc=toc;
+    cputime=cputime+tocc;
     
     if(solvestat==0)
         suc_solved = suc_solved +1;
@@ -391,7 +396,7 @@ for iter = 1:total_iter
 
 end
 
-
+    arr_cputime(uu,vv)=cputime;
     arr_opt_miss_cnt(uu,vv)=opt_miss_cnt
     arr_opt_no_miss_cnt(uu,vv)=opt_no_miss_cnt;
     arr_time_passed_tot(uu,vv)=time_passed_tot;
