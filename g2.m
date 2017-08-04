@@ -80,7 +80,7 @@ not_fea = 1;
   
   C =  randi([5 350],1,m); % server link capacity (# of tasks)
   C(end)=inf;
-  C = [5 10 15 20 15 20 35 inf];
+  C = [22 20 25 28 30 27 35 inf];
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
 %   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
