@@ -17,7 +17,7 @@ rng('default');
 % v=10;
 
 Deadline = 0.5;% deadline (sec)
-x=40; % Mcycles per task
+x=35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
@@ -353,6 +353,6 @@ arr_time_tot
 xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093]
 xxis = [12500 13000 13500 14000 14500 15000 15500 16000 16500]
 gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt,arr_opt_miss_cnt)
-figure
-plot(gtot_arr_miss_cnt)
-figure
+% figure
+% plot(gtot_arr_miss_cnt)
+% figure
