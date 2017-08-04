@@ -223,9 +223,9 @@ for iter = 1:total_iter
 
     lp = lp_maker(-obj, a, b, e,vlb, vub, xint);
     %tic
-    display('solving')
+    %display('solving')
     solvestat = mxlpsolve('solve', lp);
-    display('solved')
+    %display('solved')
     %toc
     
     if(solvestat==0)
