@@ -382,7 +382,7 @@ for iter = 1:total_iter
 end
 
 
-    arr_opt_miss_cnt(uu,vv)=opt_miss_cnt;
+    arr_opt_miss_cnt(uu,vv)=opt_miss_cnt
     arr_opt_no_miss_cnt(uu,vv)=opt_no_miss_cnt;
     arr_time_passed_tot(uu,vv)=time_passed_tot;
     arr_static_miss_cnt_c_limit(uu,vv)=static_miss_cnt_c_limit;
