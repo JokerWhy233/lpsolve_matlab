@@ -27,8 +27,8 @@ x= 35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-upper_N_ar = 10:2:20;
-v_ar=[0 1 10 100 1000];% 10000000];
+upper_N_ar = [12 14 16 18 20 22 24 26];
+v_ar=[0 1 10 100 1000 10000000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
 m=8;
@@ -78,9 +78,9 @@ not_fea = 1;
 % %   N(end)=0;
 %   
   
-  C =  randi([5 350],1,m); % server link capacity (# of tasks)
+  C =  randi([20 45],1,m); % server link capacity (# of tasks)
   C(end)=inf;
-  C = [22 20 25 28 30 27 35 inf];
+ % C = [22 20 25 28 30 27 35 inf];
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
 %   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
