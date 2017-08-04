@@ -10,9 +10,11 @@ clc
 %  diary on
 
 
+
+
 format long
 rng('default');
-
+tic
 %rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
@@ -28,7 +30,7 @@ E=70;
 A=2.37;
 p=3;
 upper_N_ar = [12 14 16 18 20 22 24 26];
-v_ar=[0 1 10 100 1000 10000000];
+v_ar=[0 1 10 100 1000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
 m=8;
@@ -434,5 +436,5 @@ total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt
 % display('en')
 
 % diary off
-save('g2_hpc_40.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
-
+save('g2_hpc_15.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
+toc

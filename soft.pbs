@@ -2,7 +2,7 @@
 #PBS -l nodes=1:ppn=8
 #PBS -l walltime=24:00:00
 #PBS -l mem=2000MB
-#PBS -N g2_40
+#PBS -N g2_15
 #PBS -e /home/rcf-40/chen116/dynamo/lpsolve_matlab
 #PBS -o /home/rcf-40/chen116/dynamo/lpsolve_matlab
 cd /home/rcf-40/chen116/dynamo/lpsolve_matlab
@@ -16,4 +16,4 @@ fi
 export LD_LIBRARY_PATH="/home/rcf-40/chen116/dynamo/lpsolve_matlab"
 rm *.e*
 rm *.o*
-matlab -nosplash -nodesktop -r "run g2.m" >> ./out/g2_40.txt
+matlab -nosplash -nodesktop -r "run g2.m" >> ./out/g2_15.txt

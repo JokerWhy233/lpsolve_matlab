@@ -27,7 +27,7 @@ len_N_tot = size(N_tot,1);
 lb_arr_miss_cnt = zeros(length(len_N_tot),4);
 arr_no_miss_cnt= zeros(length(len_N_tot),4);
 arr_static_enegery_used= zeros(length(len_N_tot),4);
-arr_time_tot= zeros(length(len_N_tot),4);
+lb_arr_time_tot= zeros(length(len_N_tot),4);
 
 met=1;
 
@@ -83,7 +83,7 @@ end
 lb_arr_miss_cnt(nn,met)=miss_cnt;
 arr_no_miss_cnt(nn,met)=no_miss_cnt;
 arr_static_enegery_used(nn,met)=static_enegery_used;
-arr_time_tot(nn,met)=time_tot ;
+lb_arr_time_tot(nn,met)=time_tot ;
 
 
 end
@@ -168,7 +168,7 @@ end
 lb_arr_miss_cnt(nn,met)=miss_cnt;
 arr_no_miss_cnt(nn,met)=no_miss_cnt;
 arr_static_enegery_used(nn,met)=static_enegery_used;
-arr_time_tot(nn,met)=time_tot ;
+lb_arr_time_tot(nn,met)=time_tot ;
 
 end
 
@@ -246,7 +246,7 @@ end
 lb_arr_miss_cnt(nn,met)=miss_cnt;
 arr_no_miss_cnt(nn,met)=no_miss_cnt;
 arr_static_enegery_used(nn,met)=static_enegery_used;
-arr_time_tot(nn,met)=time_tot ;
+lb_arr_time_tot(nn,met)=time_tot ;
 
 end
 
@@ -337,7 +337,7 @@ end
 lb_arr_miss_cnt(nn,met)=miss_cnt;
 arr_no_miss_cnt(nn,met)=no_miss_cnt;
 arr_static_enegery_used(nn,met)=static_enegery_used;
-arr_time_tot(nn,met)=time_tot ;
+lb_arr_time_tot(nn,met)=time_tot ;
 
 
 end
@@ -346,13 +346,29 @@ lb_arr_miss_cnt;
 
 total_ts=arr_no_miss_cnt+lb_arr_miss_cnt;
 arr_static_enegery_used
-arr_time_tot
+lb_arr_time_tot
 
 
 
 xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093]
-xxis = [12500 13000 13500 14000 14500 15000 15500 16000 16500]
-gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt,arr_opt_miss_cnt)
-% figure
-% plot(gtot_arr_miss_cnt)
-% figure
+xxis = [11132 11920 12687 13472 14143 14739 15051 15883];
+gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt(1:end,2:end),arr_opt_miss_cnt(1:end,1:6))
+gtot_arr_time_tot = horzcat(lb_arr_time_tot(1:end,2:end),arr_time_passed_tot(1:end,1:6))
+
+gtot_arr_miss_cnt_ratio = gtot_arr_miss_cnt;
+
+for i=1:size(gtot_arr_miss_cnt,2)
+    
+    gtot_arr_miss_cnt_ratio(:,i) = 100*gtot_arr_miss_cnt(:,i)./xxis';
+end
+
+figure
+
+    plot(xxis,gtot_arr_miss_cnt,'-*')
+
+figure
+plot(xxis,gtot_arr_time_tot,'-o')
+figure
+
+    plot(xxis,gtot_arr_miss_cnt_ratio,'-x')
+gtot_arr_miss_cnt_ratio
