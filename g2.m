@@ -77,7 +77,7 @@ not_fea = 1;
 % %   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
 % %   N(end)=0;
 %   
-  C =  randi([20 40],1,m); % server link capacity (# of tasks)
+  C =  randi([25 45],1,m); % server link capacity (# of tasks)
   C(end)=inf;
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
