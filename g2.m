@@ -38,7 +38,7 @@ m
 upper_C = 25;
 
 
-new_t = 0;
+new_t = 10;
 
 arr_opt_no_miss_cnt = zeros(length(upper_N_ar),length(v_ar));
 arr_opt_miss_cnt =  zeros(length(upper_N_ar),length(v_ar));
