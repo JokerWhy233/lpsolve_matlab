@@ -3,12 +3,12 @@
 clear
 clc
 % close all
-delete('g1.txt')
-diary('g1.txt')
+delete('g2.txt')
+diary('g2.txt')
 diary on
 format long
 rng('default');
-load('g1.mat');
+
 %rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
@@ -27,7 +27,7 @@ upper_N_ar = [12 14 16 18 20 22 24 26];
 v_ar=[0 1 10 100 1000 10000000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
-m=6;
+m=7;
 k=m;
 m
 
@@ -56,25 +56,25 @@ not_fea = 1;
 
 % while not_fea 
   first = 0;
-%   B = randi([16 64],m,m);%link rate (task per second)
-%   for i=1:m
-%       B(i,end) = 4;
-%       B(end,i) = 4;
-%   end
-%   for i=1:m
-%       for j=i:m
-%         B(i,j)=B(j,i);
-%       end
-%   end
-%   B(eye(size(B))~=0)=10e5;
-%   f =  randi([27 36],1,m)*100;%(MHz)
+  B = randi([16 64],m,m);%link rate (task per second)
+  for i=1:m
+      B(i,end) = 4;
+      B(end,i) = 4;
+  end
+  for i=1:m
+      for j=i:m
+        B(i,j)=B(j,i);
+      end
+  end
+  B(eye(size(B))~=0)=10e5;
+  f =  randi([27 36],1,m)*100;%(MHz)
 %   %f = [2700 3000 3200 3500 0];
-%   f(end)=30*150;
+  f(end)=30*150;
 % %   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
 % %   N(end)=0;
 %   
-%   C =  randi([20 45],1,m); % server link capacity (# of tasks)
-%   C(end)=inf;
+  C =  randi([20 45],1,m); % server link capacity (# of tasks)
+  C(end)=inf;
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
 %   if num_tasks < num_tasks_allowed & num_tasks < sum(C)
@@ -424,5 +424,5 @@ total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt
 % display('en')
 
 diary off
-save('g1.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
+save('g2.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
 
