@@ -17,7 +17,7 @@ rng('default');
 % v=10;
 
 Deadline = 0.5;% deadline (sec)
-x=35; % Mcycles per task
+x=40; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
