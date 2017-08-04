@@ -2,10 +2,14 @@
 
 clear
 clc
+
+
 % close all
-delete('g2.txt')
-diary('g2.txt')
-diary on
+% delete('g2.txt')
+% diary('g2.txt')
+% diary on
+
+
 format long
 rng('default');
 
@@ -425,6 +429,6 @@ total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt
 
 % display('en')
 
-diary off
-save('g2.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
+% diary off
+save('g2_hpc.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
 
