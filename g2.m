@@ -33,7 +33,7 @@ upper_N_ar = [12 14 16 18 20 22 24 26];
 v_ar=[0 1 10 100 1000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
-m=8;
+m=20;
 k=m;
 m
 
@@ -441,5 +441,5 @@ arr_cputime
 % display('en')
 
 % diary off
-save('g2_hpc_16_cpu.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime');
+save('g2_hpc_ms.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime');
 toc
