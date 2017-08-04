@@ -28,7 +28,7 @@ E=70;
 A=2.37;
 p=3;
 upper_N_ar = 10:2:20;
-v_ar=[0 1 10 100 1000 10000000];
+v_ar=[0 1 10 100 1000];% 10000000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
 m=8;
@@ -38,7 +38,7 @@ m
 upper_C = 25;
 
 
-new_t = 10;
+new_t = 20;
 
 arr_opt_no_miss_cnt = zeros(length(upper_N_ar),length(v_ar));
 arr_opt_miss_cnt =  zeros(length(upper_N_ar),length(v_ar));
