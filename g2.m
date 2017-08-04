@@ -441,5 +441,5 @@ arr_cputime
 % display('en')
 
 % diary off
-save('g2_hpc_16.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime');
+save('g2_hpc_16_cpu.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime');
 toc
