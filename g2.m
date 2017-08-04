@@ -38,7 +38,7 @@ m
 upper_C = 25;
 
 
-new_t = 10;
+new_t = 5;
 
 arr_opt_no_miss_cnt = zeros(length(upper_N_ar),length(v_ar));
 arr_opt_miss_cnt =  zeros(length(upper_N_ar),length(v_ar));
@@ -77,7 +77,7 @@ not_fea = 1;
 % %   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
 % %   N(end)=0;
 %   
-  C =  randi([15 35],1,m); % server link capacity (# of tasks)
+  C =  randi([5 25],1,m); % server link capacity (# of tasks)
   C(end)=inf;
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
