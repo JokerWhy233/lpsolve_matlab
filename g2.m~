@@ -2,10 +2,14 @@
 
 clear
 clc
+
+
 % close all
-delete('g2.txt')
-diary('g1.txt')
-diary on
+% delete('g2.txt')
+% diary('g2.txt')
+% diary on
+
+
 format long
 rng('default');
 
@@ -23,11 +27,11 @@ x= 35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-upper_N_ar = [12 14 16 18 20 22 24 26];
+upper_N_ar = 10:2:20;
 v_ar=[0 1 10 100 1000 10000000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
-m=7;
+m=8;
 k=m;
 m
 
@@ -73,7 +77,7 @@ not_fea = 1;
 % %   N=  randi([new_t new_t+upper_N],1,m); % number of tasks(cars)
 % %   N(end)=0;
 %   
-  C =  randi([20 45],1,m); % server link capacity (# of tasks)
+  C =  randi([5 45],1,m); % server link capacity (# of tasks)
   C(end)=inf;
 %   num_tasks_allowed = sum(floor(tau*f/x));
 %   num_tasks = sum(N);
@@ -382,7 +386,7 @@ for iter = 1:total_iter
 end
 
 
-    arr_opt_miss_cnt(uu,vv)=opt_miss_cnt;
+    arr_opt_miss_cnt(uu,vv)=opt_miss_cnt
     arr_opt_no_miss_cnt(uu,vv)=opt_no_miss_cnt;
     arr_time_passed_tot(uu,vv)=time_passed_tot;
     arr_static_miss_cnt_c_limit(uu,vv)=static_miss_cnt_c_limit;
@@ -394,6 +398,8 @@ end
 
 
 toc
+uu
+vv
 uu_cnt=1;
 
 end
@@ -423,6 +429,6 @@ total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt
 
 % display('en')
 
-diary off
-save('g1.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
+% diary off
+save('g2_hpc.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
 
