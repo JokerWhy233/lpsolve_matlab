@@ -7,7 +7,7 @@ clear
 clc
 close all
 format long
-load('g1.mat');
+load('g2_hpc.mat');
 rng('default');
 %rng(1);
 %rng('shuffle');
@@ -17,11 +17,11 @@ rng('default');
 % v=10;
 
 Deadline = 0.5;% deadline (sec)
-x=40; % Mcycles per task
+x=35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-m=6;
+m=8;
 
 len_N_tot = size(N_tot,1);
 lb_arr_miss_cnt = zeros(length(len_N_tot),4);

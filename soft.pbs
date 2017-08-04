@@ -16,4 +16,4 @@ fi
 export LD_LIBRARY_PATH="/home/rcf-40/chen116/dynamo/lpsolve_matlab"
 rm *.e*
 rm *.o*
-matlab -nosplash -nodesktop -r "run g1.m" >> ./out/g1_node.txt
+matlab -nosplash -nodesktop -r "run g2.m" >> ./out/g2_25.txt
