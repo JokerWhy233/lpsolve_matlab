@@ -23,7 +23,7 @@ x= 35; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-upper_N_ar = 8:2:10;
+upper_N_ar = 10:2:20;
 v_ar=[0 1 10 100 1000 10000000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
@@ -382,7 +382,7 @@ for iter = 1:total_iter
 end
 
 
-    arr_opt_miss_cnt(uu,vv)=opt_miss_cnt;
+    arr_opt_miss_cnt(uu,vv)=opt_miss_cnt
     arr_opt_no_miss_cnt(uu,vv)=opt_no_miss_cnt;
     arr_time_passed_tot(uu,vv)=time_passed_tot;
     arr_static_miss_cnt_c_limit(uu,vv)=static_miss_cnt_c_limit;
