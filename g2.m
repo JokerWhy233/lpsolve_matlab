@@ -30,7 +30,7 @@ E=70;
 A=2.37;
 p=3;
 upper_N_ar = [12 14 16 18 20 22 24 26];
-v_ar=[0 1 10 100 1000 10000];
+v_ar=[0 1 10 100 1000];
 % upper_N_ar = [10 12];
 % v_ar=[0 1 10];
 m=8;
@@ -396,7 +396,7 @@ for iter = 1:total_iter
 
 end
 
-    arr_cputime(uu,vv)=cputime;
+    arr_cputime(uu,vv)=cputime/total_iter;
     arr_opt_miss_cnt(uu,vv)=opt_miss_cnt
     arr_opt_no_miss_cnt(uu,vv)=opt_no_miss_cnt;
     arr_time_passed_tot(uu,vv)=time_passed_tot;
@@ -435,11 +435,11 @@ total_ts=arr_opt_no_miss_cnt+arr_opt_miss_cnt
 arr_time_passed_tot
 arr_static_miss=arr_static_miss_cnt_c_limit+ arr_static_miss_cnt_t_limit
 total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt_t_limit
-
+arr_cputime
 
 
 % display('en')
 
 % diary off
-save('g2_hpc_16.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot');
+save('g2_hpc_16.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime');
 toc
