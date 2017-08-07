@@ -9,6 +9,10 @@ close all
 format long
 load('g2_hpc_16_cpu.mat');
 rng('default');
+
+arr_opt_miss_cnt(:,[4,5])=arr_opt_miss_cnt(:,[5,4]);
+arr_time_passed_tot(:,[4,5])=arr_time_passed_tot(:,[5,4]);
+
 %rng(1);
 %rng('shuffle');
 % D = 0.4;% deadline (sec)
@@ -350,49 +354,49 @@ lb_arr_time_tot
 
 
 
-xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093];
-xxis = [11132 11920 12687 13472 14143 14739 15051];
-gtot_arr_miss_cnt=horzcat(arr_opt_miss_cnt(1:end-1,end),lb_arr_miss_cnt(1:end-1,:))
-gtot_arr_time_tot = horzcat(arr_time_passed_tot(1:end-1,end),lb_arr_time_tot(1:end-1,:))
-
-gtot_arr_miss_cnt_ratio = gtot_arr_miss_cnt;
-
-for i=1:size(gtot_arr_miss_cnt,2)
-    
-    gtot_arr_miss_cnt_ratio(:,i) = 100*gtot_arr_miss_cnt(:,i)./xxis';
-end
-
-figure
-plot(xxis,gtot_arr_miss_cnt,'-*')
-legend('Optimized v=100','Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Location','northwest')
-xlabel('Total Number of Tasks')
-ylabel('Number of Missed Deadlines')
-
-
-figure
-plot(xxis,gtot_arr_time_tot,'-*')
-legend('Optimized v=100','Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Location','northwest')
-xlabel('Total Number of Tasks')
-ylabel('Total Runtime(sec)')
-
-%figure
-% plot(xxis,gtot_arr_miss_cnt_ratio,'-x')
-% legend('Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Optimized','Location','northwest')
+% xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093];
+% xxis = [11132 11920 12687 13472 14143 14739 15051];
+% gtot_arr_miss_cnt=horzcat(arr_opt_miss_cnt(1:end-1,end),lb_arr_miss_cnt(1:end-1,:))
+% gtot_arr_time_tot = horzcat(arr_time_passed_tot(1:end-1,end),lb_arr_time_tot(1:end-1,:))
+% 
+% gtot_arr_miss_cnt_ratio = gtot_arr_miss_cnt;
+% 
+% for i=1:size(gtot_arr_miss_cnt,2)
+%     
+%     gtot_arr_miss_cnt_ratio(:,i) = 100*gtot_arr_miss_cnt(:,i)./xxis';
+% end
+% 
+% figure
+% plot(xxis,gtot_arr_miss_cnt,'-*')
+% legend('Optimized v=100','Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Location','northwest')
 % xlabel('Total Number of Tasks')
-% ylabel('Missed Deadlines Ratio(%)')
-% gtot_arr_miss_cnt_ratio
-
-figure
-plot(xxis(1:end),arr_opt_miss_cnt(1:end-1,:),'-x')
-legend('v=0','v=1','v=10','v=100','v=inf','Location','northwest')
-xlabel('Total Number of Tasks')
-ylabel('Number of Missed Deadlines')
-
-figure
-plot(xxis(1:end),arr_time_passed_tot(1:end-1,:),'-x')
-legend('v=0','v=1','v=10','v=100','v=inf','Location','northwest')
-xlabel('Total Number of Tasks')
-ylabel('Total Runtime(sec)')
+% ylabel('Number of Missed Deadlines')
+% 
+% 
+% figure
+% plot(xxis,gtot_arr_time_tot,'-*')
+% legend('Optimized v=100','Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Location','northwest')
+% xlabel('Total Number of Tasks')
+% ylabel('Total Runtime(sec)')
+% 
+% %figure
+% % plot(xxis,gtot_arr_miss_cnt_ratio,'-x')
+% % legend('Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Optimized','Location','northwest')
+% % xlabel('Total Number of Tasks')
+% % ylabel('Missed Deadlines Ratio(%)')
+% % gtot_arr_miss_cnt_ratio
+% 
+% figure
+% plot(xxis(1:end),arr_opt_miss_cnt(1:end-1,:),'-x')
+% legend('v=0','v=1','v=10','v=100','v=inf','Location','northwest')
+% xlabel('Total Number of Tasks')
+% ylabel('Number of Missed Deadlines')
+% 
+% figure
+% plot(xxis(1:end),arr_time_passed_tot(1:end-1,:),'-x')
+% legend('v=0','v=1','v=10','v=100','v=inf','Location','northwest')
+% xlabel('Total Number of Tasks')
+% ylabel('Total Runtime(sec)')
 
 
 
@@ -443,48 +447,158 @@ ylabel('Total Runtime(sec)')
 
 
 
+% % 
+% xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093];
+% xxis = [11132 11920 12687 13472 14143 14739 15051 15883];
+% gtot_arr_miss_cnt=horzcat(arr_opt_miss_cnt(:,end),lb_arr_miss_cnt(:,1:end))
+% gtot_arr_time_tot = horzcat(arr_time_passed_tot(:,end),lb_arr_time_tot(:,1:end))
+% 
+% gtot_arr_miss_cnt_ratio = gtot_arr_miss_cnt;
+% 
+% for i=1:size(gtot_arr_miss_cnt,2)
+%     
+%     gtot_arr_miss_cnt_ratio(:,i) = 100*gtot_arr_miss_cnt(:,i)./xxis';
+% end
+% 
+% 
+% figure
+% plot(xxis,gtot_arr_miss_cnt,'-*')
+% legend({'Optimized, v=100','Local Static','Round Robin','Active Monitoring','Throttled Load Balancer'},'Location','northwest','FontSize',16)
+% xlabel('Total Number of Tasks')
+% ylabel('Number of Missed Deadlines')
+% 
+% 
+% figure
+% plot(xxis,gtot_arr_time_tot,'-*')
+% legend({'Optimized, v=100','Local Static','Round Robin','Active Monitoring','Throttled Load Balancer'},'Location','northwest','FontSize',16)
+% xlabel('Total Number of Tasks')
+% ylabel('Total Runtime(sec)')
+% 
+% figure
+% plot(xxis(1:end),arr_opt_miss_cnt(1:end,:),'-x')
+% legend({'v=0','v=1','v=10','v=100','v=inf'},'Location','northwest','FontSize',16)
+% xlabel('Total Number of Tasks')
+% ylabel('Number of Missed Deadlines')
+% 
+% figure
+% plot(xxis(1:end),arr_time_passed_tot(1:end,:),'-x')
+% legend({'v=0','v=1','v=10','v=100','v=inf'},'Location','northwest','FontSize',16)
+% xlabel('Total Number of Tasks')
+% ylabel('Total Runtime(sec)')
 
+% 
 xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093];
 xxis = [11132 11920 12687 13472 14143 14739 15051 15883];
-gtot_arr_miss_cnt=horzcat(arr_opt_miss_cnt(:,end),lb_arr_miss_cnt(:,1:end))
-gtot_arr_time_tot = horzcat(arr_time_passed_tot(:,end),lb_arr_time_tot(:,1:end))
+gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt(3:7,2:end),arr_opt_miss_cnt(3:7,end))
+gtot_arr_time_tot = horzcat(lb_arr_time_tot(3:7,2:end),arr_time_passed_tot(3:7,end))
 
 gtot_arr_miss_cnt_ratio = gtot_arr_miss_cnt;
 
-for i=1:size(gtot_arr_miss_cnt,2)
-    
-    gtot_arr_miss_cnt_ratio(:,i) = 100*gtot_arr_miss_cnt(:,i)./xxis';
+
+
+h=figure
+bar(xxis(3:7),gtot_arr_miss_cnt)
+legend({'Weighted Round Robin','Active Monitoring','Throttled Load Balancer','Optimized, v=100'},'Location','northwest','FontSize',19)
+xlabel('Total Number of Tasks')
+ylabel('Number of Missed Deadlines')
+xt = get(gca, 'XTick');
+set(gca, 'FontSize', 14)
+xt = get(gca, 'YTick');
+set(gca, 'FontSize', 14)
+%save to pdf
+    set(h,'Units','Inches');
+    pos = get(h,'Position');
+    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+    print(h,'res_opt_vs_lb_md','-dpdf','-r0')
+
+
+gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt(3:7,2:end),arr_opt_miss_cnt(3:7,end))
+h=figure
+bar(xxis(3:7),[lb_arr_miss_cnt(3:7,1) arr_opt_miss_cnt(3:7,end)])
+legend({'Local Static','Optimized, v=100'},'Location','northwest','FontSize',19)
+xlabel('Total Number of Tasks','FontSize',18)
+ylabel('Number of Missed Deadlines','FontSize',18)
+xt = get(gca, 'XTick');
+set(gca, 'FontSize', 14)
+xt = get(gca, 'YTick');
+set(gca, 'FontSize', 14)
+    set(h,'Units','Inches');
+    pos = get(h,'Position');
+    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+    print(h,'res_opt_vs_ls_md','-dpdf','-r0')
+
+
+h=figure
+bar(xxis(3:7),gtot_arr_time_tot)
+legend({'Weighted Round Robin','Active Monitoring','Throttled Load Balancer','Optimized, v=100'},'Location','northwest','FontSize',19)
+xlabel('Total Number of Tasks','FontSize',18)
+ylabel('Total Runtime(sec)','FontSize',18)
+xt = get(gca, 'XTick');
+set(gca, 'FontSize', 14)
+xt = get(gca, 'YTick');
+set(gca, 'FontSize', 14)
+ylim([150 450])
+    set(h,'Units','Inches');
+    pos = get(h,'Position');
+    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+    print(h,'res_opt_vs_lb_time','-dpdf','-r0')
+
+% 
+h=figure
+bar(xxis(3:7),[lb_arr_time_tot(3:7,1) arr_time_passed_tot(3:7,end)])
+legend({'Local Static','Optimized, v=100'},'Location','northwest','FontSize',19)
+xlabel('Total Number of Tasks','FontSize',18)
+ylabel('Total Runtime(sec)','FontSize',18)
+xt = get(gca, 'XTick');
+set(gca, 'FontSize', 14)
+xt = get(gca, 'YTick');
+set(gca, 'FontSize', 14)
+    set(h,'Units','Inches');
+    pos = get(h,'Position');
+    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+    print(h,'res_opt_vs_ls_time','-dpdf','-r0')
+
+
+
+% 
+
+h=figure
+bar(xxis(3:7),arr_opt_miss_cnt(3:7,:))
+legend({'v=0','v=1','v=10','v=100','v=inf'},'Location','northwest','FontSize',19)
+xlabel('Total Number of Tasks','FontSize',18)
+ylabel('Number of Missed Deadlines','FontSize',18)
+xt = get(gca, 'XTick');
+set(gca, 'FontSize', 14)
+xt = get(gca, 'YTick');
+set(gca, 'FontSize', 14)
+    set(h,'Units','Inches');
+    pos = get(h,'Position');
+    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+    print(h,'res_opt_vs_opt_md','-dpdf','-r0')
+
+
+avg_arr_time_passed_tot=arr_time_passed_tot(3:7,:);
+for i=1:size(avg_arr_time_passed_tot,2)
+    avg_arr_time_passed_tot(i,:)=avg_arr_time_passed_tot(i,:)/xxis(2+i);
 end
 
-figure
-plot(xxis,gtot_arr_miss_cnt,'-*')
-legend('Optimized v=100','Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Location','northwest')
-xlabel('Total Number of Tasks')
-ylabel('Number of Missed Deadlines')
+
+h=figure
+bar(xxis(3:7),arr_time_passed_tot(3:7,:))
+legend({'v=0','v=1','v=10','v=100','v=inf'},'Location','northwest','FontSize',19)
+xlabel('Total Number of Tasks','FontSize',18)
+ylabel('Total Runtime(sec)','FontSize',18)
+xt = get(gca, 'XTick');
+set(gca, 'FontSize', 14)
+xt = get(gca, 'YTick');
+set(gca, 'FontSize', 14)
+ylim([150 350])
+    set(h,'Units','Inches');
+    pos = get(h,'Position');
+    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+    print(h,'res_opt_vs_opt_time','-dpdf','-r0')
+
+%ylim([0.01 0.025])
 
 
-figure
-plot(xxis,gtot_arr_time_tot,'-*')
-legend('Optimized v=100','Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Location','northwest')
-xlabel('Total Number of Tasks')
-ylabel('Total Runtime(sec)')
-
-%figure
-% plot(xxis,gtot_arr_miss_cnt_ratio,'-x')
-% legend('Local Static','Round Robin','Active Monitoring','Throttled Loda Balancer','Optimized','Location','northwest')
-% xlabel('Total Number of Tasks')
-% ylabel('Missed Deadlines Ratio(%)')
-% gtot_arr_miss_cnt_ratio
-
-figure
-plot(xxis(1:end),arr_opt_miss_cnt(1:end,:),'-x')
-legend('v=0','v=1','v=10','v=100','v=inf','Location','northwest')
-xlabel('Total Number of Tasks')
-ylabel('Number of Missed Deadlines')
-
-figure
-plot(xxis(1:end),arr_time_passed_tot(1:end,:),'-x')
-legend('v=0','v=1','v=10','v=100','v=inf','Location','northwest')
-xlabel('Total Number of Tasks')
-ylabel('Total Runtime(sec)')
 
