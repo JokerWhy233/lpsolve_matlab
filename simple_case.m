@@ -23,11 +23,10 @@ x= 1296; % Mcycles per task
 E=70;
 A=2.37;
 p=3;
-v=10;
+v=10000;
 m=2;
 k=m;
 m
-
 
 
 task_iter = 1
