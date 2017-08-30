@@ -404,8 +404,7 @@ end
     arr_static_miss_cnt_t_limit(uu,vv)=static_miss_cnt_t_limit;
     arr_static_no_miss_cnt(uu,vv)=static_no_miss_cnt;
 
-arr_opt_enegery_used(uu,vv) = opt_enegery_used;
-arr_static_enegery_used(uu,vv)= static_enegery_used;
+
 
 
 
