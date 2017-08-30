@@ -445,5 +445,5 @@ arr_static_enegery_used
 % display('en')
 
 % diary off
-save('g2_d15_en.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime','arr_opt_enegery_used','arr_static_enegery_used');
+save('g2_d16_en.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime','arr_opt_enegery_used','arr_static_enegery_used');
 toc
