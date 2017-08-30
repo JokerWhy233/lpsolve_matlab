@@ -419,8 +419,10 @@ end
 
 end
 
-
-
+%15
+ %  804   655    34     1     0
+ %  745   630    40     2     2
+ %  630   522    51     0     0
 
 
 
@@ -437,10 +439,11 @@ arr_time_passed_tot
 arr_static_miss=arr_static_miss_cnt_c_limit+ arr_static_miss_cnt_t_limit
 total_ts=arr_static_no_miss_cnt+arr_static_miss_cnt_c_limit+ arr_static_miss_cnt_t_limit
 arr_cputime
-
+arr_opt_enegery_used
+arr_static_enegery_used
 
 % display('en')
 
 % diary off
-save('g2_hpc_ms_12.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime');
+save('g2_d15_en.mat','f','C','B','N_tot','arr_opt_miss_cnt','arr_time_passed_tot','arr_cputime','arr_opt_enegery_used','arr_static_enegery_used');
 toc
