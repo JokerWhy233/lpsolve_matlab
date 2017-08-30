@@ -489,8 +489,8 @@ lb_arr_time_tot
 % 
 xxis = [12419 12986 13466 14053 14691 15247 15508 16014 16093];
 xxis = [11132 11920 12687 13472 14143 14739 15051 15883];
-gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt(3:7,2:end),arr_opt_miss_cnt(3:7,end))
-gtot_arr_time_tot = horzcat(lb_arr_time_tot(3:7,2:end),arr_time_passed_tot(3:7,end))
+gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt(3:7,1:end),arr_opt_miss_cnt(3:7,5))
+gtot_arr_time_tot = horzcat(lb_arr_time_tot(3:7,1:end),arr_time_passed_tot(3:7,5))
 
 gtot_arr_miss_cnt_ratio = gtot_arr_miss_cnt;
 
@@ -498,67 +498,74 @@ gtot_arr_miss_cnt_ratio = gtot_arr_miss_cnt;
 
 h=figure
 bar(xxis(3:7),gtot_arr_miss_cnt)
-legend({'Weighted Round Robin','Active Monitoring','Throttled Load Balancer','Optimized, v=100'},'Location','northwest','FontSize',19)
+legend({'Local Static','Weighted Round Robin','Active Monitoring','Throttled Load Balancer','Optimized, v=100'},'Location','northwest','FontSize',15)
 xlabel('Total Number of Tasks')
 ylabel('Number of Missed Deadlines')
 xt = get(gca, 'XTick');
 set(gca, 'FontSize', 14)
 xt = get(gca, 'YTick');
 set(gca, 'FontSize', 14)
+%set(gca,'YScale','log')
+ylim([0 2600])
 %save to pdf
     set(h,'Units','Inches');
     pos = get(h,'Position');
     set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-    print(h,'res_opt_vs_lb_md','-dpdf','-r0')
+    print(h,'res_opt_vs_lb_ls_md','-dpdf','-r0')
 
 
-gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt(3:7,2:end),arr_opt_miss_cnt(3:7,end))
+
+
+% gtot_arr_miss_cnt=horzcat(lb_arr_miss_cnt(3:7,2:end),arr_opt_miss_cnt(3:7,end))
+% h=figure
+% bar(xxis(3:7),[lb_arr_miss_cnt(3:7,1) arr_opt_miss_cnt(3:7,end)])
+% legend({'Local Static','Optimized, v=100'},'Location','northwest','FontSize',19)
+% xlabel('Total Number of Tasks','FontSize',18)
+% ylabel('Number of Missed Deadlines','FontSize',18)
+% xt = get(gca, 'XTick');
+% set(gca, 'FontSize', 14)
+% xt = get(gca, 'YTick');
+% set(gca, 'FontSize', 14)
+%     set(h,'Units','Inches');
+%     pos = get(h,'Position');
+%     set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+%     print(h,'res_opt_vs_ls_md','-dpdf','-r0')
+% 
+
 h=figure
-bar(xxis(3:7),[lb_arr_miss_cnt(3:7,1) arr_opt_miss_cnt(3:7,end)])
-legend({'Local Static','Optimized, v=100'},'Location','northwest','FontSize',19)
-xlabel('Total Number of Tasks','FontSize',18)
-ylabel('Number of Missed Deadlines','FontSize',18)
-xt = get(gca, 'XTick');
-set(gca, 'FontSize', 14)
-xt = get(gca, 'YTick');
-set(gca, 'FontSize', 14)
-    set(h,'Units','Inches');
-    pos = get(h,'Position');
-    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-    print(h,'res_opt_vs_ls_md','-dpdf','-r0')
-
-
-h=figure
-bar(xxis(3:7),gtot_arr_time_tot)
-legend({'Weighted Round Robin','Active Monitoring','Throttled Load Balancer','Optimized, v=100'},'Location','northwest','FontSize',19)
+b=bar(xxis(3:7),gtot_arr_time_tot)
+legend({'Local Static','Weighted Round Robin','Active Monitoring','Throttled Load Balancer','Optimized, v=100'},'Location','northwest','FontSize',15)
 xlabel('Total Number of Tasks','FontSize',18)
 ylabel('Total Runtime(sec)','FontSize',18)
-xt = get(gca, 'XTick');
-set(gca, 'FontSize', 14)
-xt = get(gca, 'YTick');
-set(gca, 'FontSize', 14)
-ylim([150 450])
+
+%set(gca,'YScale','log')
+%breakyaxis([450 700])
+% ylim([150 450])
     set(h,'Units','Inches');
     pos = get(h,'Position');
     set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-    print(h,'res_opt_vs_lb_time','-dpdf','-r0')
+    print(h,'res_opt_vs_lb_ls_time','-dpdf','-r0')
 
-% 
-h=figure
-bar(xxis(3:7),[lb_arr_time_tot(3:7,1) arr_time_passed_tot(3:7,end)])
-legend({'Local Static','Optimized, v=100'},'Location','northwest','FontSize',19)
-xlabel('Total Number of Tasks','FontSize',18)
-ylabel('Total Runtime(sec)','FontSize',18)
-xt = get(gca, 'XTick');
-set(gca, 'FontSize', 14)
-xt = get(gca, 'YTick');
-set(gca, 'FontSize', 14)
-    set(h,'Units','Inches');
-    pos = get(h,'Position');
-    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-    print(h,'res_opt_vs_ls_time','-dpdf','-r0')
 
+
+
+
+% % 
+% h=figure
+% bar(xxis(3:7),[lb_arr_time_tot(3:7,1) arr_time_passed_tot(3:7,end)])
+% legend({'Local Static','Optimized, v=100'},'Location','northwest','FontSize',19)
+% xlabel('Total Number of Tasks','FontSize',18)
+% ylabel('Total Runtime(sec)','FontSize',18)
+% xt = get(gca, 'XTick');
+% set(gca, 'FontSize', 14)
+% xt = get(gca, 'YTick');
+% set(gca, 'FontSize', 14)
+%     set(h,'Units','Inches');
+%     pos = get(h,'Position');
+%     set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+%     print(h,'res_opt_vs_ls_time','-dpdf','-r0')
 % 
+% % 
 % 
 % % 
 % 
@@ -602,3 +609,54 @@ set(gca, 'FontSize', 14)
 % 
 % 
 % 
+%%
+% clear
+% clc
+% close all
+% 
+close all
+fH = gcf; colormap(jet(5));
+h=figure
+bar(gtot_arr_miss_cnt)
+applyhatch_pluscolor(fH, '\-x./', 0, [1 0 1 0 1], jet(5));
+legend({'Local Static','Weighted Round Robin','Active Monitoring','Throttled Load Balancer','Optimized, v=100'},'Location','northwest','FontSize',15)
+xlabel('Total Number of Tasks')
+ylabel('Number of Missed Deadlines')
+%applyhatch_pluscolor(fH, '\-x.', 0, [1 0 1 0], jet(4));
+% xt = get(gca, 'XTick');
+% set(gca, 'FontSize', 14)
+% xt = get(gca, 'YTick');
+% set(gca, 'FontSize', 14)
+%set(gca,'YScale','log')
+ylim([0 2600])
+%save to pdf
+%     set(h,'Units','Inches');
+%     pos = get(h,'Position');
+%     set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+%     print(h,'res_opt_vs_lb_ls_md','-dpdf','-r0')
+%%
+
+close all
+% Create original plot
+h=
+fH = gcf; colormap(jet(5));
+bar(gtot_arr_miss_cnt);
+set(gca,'XTickLabel',{'12687', '13472', '14143','14739', '15051'})
+legend({'Local Static','Weighted Round Robin','Active Monitoring','Throttled Load Balancer','Optimized, v=100'},'Location','northwest','FontSize',12)
+xlabel('Total Number of Tasks')
+ylabel('Number of Missed Deadlines')
+ylim([0 2600])
+xt = get(gca, 'XTick');
+set(gca, 'FontSize', 14)
+xt = get(gca, 'YTick');
+set(gca, 'FontSize', 14)
+
+% Apply Brandon's function
+tH = title('Brandon''s applyhatch');
+applyhatch_pluscolor(fH, '\-/x.', 0, [1 0 1 0 1], jet(5));
+%save to pdf
+    set(h,'Units','Inches');
+    pos = get(h,'Position');
+    set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+    print(h,'res_opt_vs_lb_ls_md','-dpdf','-r0')
+
